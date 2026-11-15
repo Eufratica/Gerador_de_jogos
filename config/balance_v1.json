@@ -1,0 +1,192 @@
+{
+  "schema_version": "1.0.0",
+  "bignum_format": {
+    "decimal_places": 2,
+    "suffixes": ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"]
+  },
+  "upgrade_curves": {
+    "attack": {
+      "base_value": 12.0,
+      "growth_linear": 4.5,
+      "growth_exp": 1.075,
+      "base_cost": 10.0,
+      "cost_ratio": 1.14,
+      "hard_cap_level": null
+    },
+    "crit_rate": {
+      "base_value": 0.05,
+      "growth_linear": 0.0025,
+      "growth_exp": 1.0,
+      "base_cost": 25.0,
+      "cost_ratio": 1.22,
+      "hard_cap_value": 1.0,
+      "overflow_to_crit_dmg_ratio": 2.0
+    },
+    "crit_damage": {
+      "base_value": 1.5,
+      "growth_linear": 0.08,
+      "growth_exp": 1.02,
+      "base_cost": 30.0,
+      "cost_ratio": 1.16,
+      "hard_cap_level": null
+    },
+    "attack_speed": {
+      "base_value": 1.0,
+      "growth_linear": 0.015,
+      "growth_exp": 1.0,
+      "base_cost": 40.0,
+      "cost_ratio": 1.25,
+      "hard_cap_value": 4.0
+    },
+    "penetration": {
+      "base_value": 0.0,
+      "growth_linear": 3.0,
+      "growth_exp": 1.06,
+      "base_cost": 50.0,
+      "cost_ratio": 1.18,
+      "hard_cap_level": null
+    }
+  },
+  "ki_transformations": [
+    {
+      "id": "BASE",
+      "tier": 1,
+      "display_name": "Guerreiro Base",
+      "unlock_stage": 1,
+      "ki_cost": 0,
+      "atk_mult": 1.0,
+      "spd_mult": 1.0,
+      "crit_dmg_bonus": 0.0,
+      "aura_shader_preset": "aura_none",
+      "hair_palette_id": "obsidian"
+    },
+    {
+      "id": "PRIMAL_FURY",
+      "tier": 2,
+      "display_name": "Furia Primitiva",
+      "unlock_stage": 15,
+      "ki_cost": 100,
+      "atk_mult": 2.5,
+      "spd_mult": 1.15,
+      "crit_dmg_bonus": 0.5,
+      "aura_shader_preset": "aura_crimson_sparks",
+      "hair_palette_id": "crimson_dark"
+    },
+    {
+      "id": "SUPER_SAIYAN",
+      "tier": 3,
+      "display_name": "Super Saiyajin",
+      "unlock_stage": 50,
+      "ki_cost": 300,
+      "atk_mult": 8.0,
+      "spd_mult": 1.35,
+      "crit_dmg_bonus": 1.5,
+      "aura_shader_preset": "aura_solar_gold",
+      "hair_palette_id": "gold_neon"
+    },
+    {
+      "id": "DIVINE_GOD",
+      "tier": 4,
+      "display_name": "Divino",
+      "unlock_stage": 150,
+      "ki_cost": 750,
+      "atk_mult": 32.0,
+      "spd_mult": 1.6,
+      "crit_dmg_bonus": 4.0,
+      "aura_shader_preset": "aura_cyan_plasma",
+      "hair_palette_id": "cyan_divine"
+    },
+    {
+      "id": "ULTRA_INSTINCT",
+      "tier": 5,
+      "display_name": "Ultra Instinto",
+      "unlock_stage": 400,
+      "ki_cost": 1500,
+      "atk_mult": 160.0,
+      "spd_mult": 2.0,
+      "crit_dmg_bonus": 10.0,
+      "aura_shader_preset": "aura_silver_void",
+      "hair_palette_id": "silver_astral"
+    }
+  ],
+  "gacha_banners": [
+    {
+      "banner_id": "weapons_mythic_v1",
+      "category": "WEAPON",
+      "single_cost_gems": 50,
+      "ten_pull_cost_gems": 450,
+      "daily_ad_ten_pull_cap": 3,
+      "pity_hard_threshold": 50,
+      "pity_guaranteed_min_rarity": "MYTHIC",
+      "probabilities": {
+        "COMMON": 0.55,
+        "RARE": 0.28,
+        "EPIC": 0.12,
+        "LEGENDARY": 0.04,
+        "MYTHIC": 0.01
+      }
+    }
+  ],
+  "prestige_config": {
+    "min_stage_required": 50,
+    "base_divisor": 50.0,
+    "stage_exponent": 1.45,
+    "soul_orb_scale": 10.0,
+    "per_orb_atk_bonus": 0.25,
+    "per_orb_gold_bonus": 0.15
+  },
+  "offline_rewards_config": {
+    "min_claim_seconds": 60,
+    "max_offline_seconds": 28800,
+    "efficiency_ratio": 0.6,
+    "dragon_chest_ad_multiplier": 3.0
+  },
+  "ddtank_ballistics_config": {
+    "orientation": "LANDSCAPE_16_9",
+    "arena_logical_width": 1920.0,
+    "arena_logical_height": 1080.0,
+    "player_anchor_x": 220.0,
+    "boss_anchor_x_min": 1320.0,
+    "boss_anchor_x_max": 1580.0,
+    "gravity": 980.0,
+    "v_min": 350.0,
+    "v_max": 1650.0,
+    "angle_min_deg": 5.0,
+    "angle_max_deg": 85.0,
+    "wind_min": -100.0,
+    "wind_max": 100.0,
+    "wind_accel_factor": 2.2,
+    "fixed_dt": 0.008333333333333333,
+    "max_flight_seconds": 8.0,
+    "crater_radius_px": 56.0,
+    "head_core_multiplier": 10.0,
+    "body_multiplier": 1.0,
+    "limb_glancing_multiplier": 0.5,
+    "laser_guide_points": 48,
+    "laser_guide_dt": 0.045
+  },
+  "enemy_stage_config": {
+    "waves_per_stage": 5,
+    "hp_base": 45.0,
+    "hp_stage_ratio": 1.24,
+    "armor_base": 2.0,
+    "armor_stage_ratio": 1.12,
+    "gold_base": 8.0,
+    "gold_stage_ratio": 1.18,
+    "boss_hp_multiplier": 12.0,
+    "titanic_boss_every_n_stages": 5,
+    "titanic_posture_max": 100.0,
+    "qte_window_ms": 2500,
+    "boss_enrage_seconds": 45.0
+  },
+  "monetization_placements": {
+    "no_ads_sku": "no_ads_pass",
+    "rewarded_placements": [
+      "dragon_chest_offline_3x",
+      "fury_of_gods_20m_boost",
+      "daily_gacha_10x_free",
+      "boss_instant_revive_full_pow",
+      "ddtank_atomic_laser_guide"
+    ]
+  }
+}

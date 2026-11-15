@@ -1,0 +1,572 @@
+{
+  "schema_version": "1.0.0",
+  "player_combat": {
+    "move_speed": 460.0,
+    "jump_velocity": 980.0,
+    "gravity": 2100.0,
+    "player_half_width": 26.0,
+    "player_height": 110.0,
+    "dash_speed": 980.0,
+    "dash_duration_s": 0.24,
+    "dash_iframe_s": 0.22,
+    "dash_cooldown_s": 0.70,
+    "base_max_hp": 260.0,
+    "base_max_mana": 100.0,
+    "mana_regen_per_s": 7.5,
+    "mana_on_hit": 9.0,
+    "rage_on_hit": 0.07,
+    "rage_on_dodge": 0.18,
+    "rage_duration_s": 10.0,
+    "rage_dmg_mult": 2.0,
+    "rage_spd_mult": 1.30,
+    "qte_window_ms": 2500,
+    "qte_finisher_mult": 8.5,
+    "combo_steps": [
+      {
+        "id": "slash_1",
+        "damage_mult": 1.0,
+        "posture_dmg": 15.0,
+        "reach_x": 160.0,
+        "reach_y": 125.0,
+        "windup_s": 0.08,
+        "active_s": 0.10,
+        "recovery_s": 0.14,
+        "combo_window_s": 0.45,
+        "lunge_vx": 120.0
+      },
+      {
+        "id": "slash_2",
+        "damage_mult": 1.4,
+        "posture_dmg": 22.0,
+        "reach_x": 180.0,
+        "reach_y": 135.0,
+        "windup_s": 0.09,
+        "active_s": 0.10,
+        "recovery_s": 0.16,
+        "combo_window_s": 0.45,
+        "lunge_vx": 150.0
+      },
+      {
+        "id": "chain_cleave_3",
+        "damage_mult": 2.25,
+        "posture_dmg": 38.0,
+        "reach_x": 225.0,
+        "reach_y": 150.0,
+        "windup_s": 0.12,
+        "active_s": 0.12,
+        "recovery_s": 0.22,
+        "combo_window_s": 0.0,
+        "lunge_vx": 210.0
+      }
+    ],
+    "magic_powers": [
+      {
+        "id": "chaos_flames",
+        "display_name": "Chamas do Caos",
+        "mana_cost": 25.0,
+        "cooldown_s": 4.2,
+        "damage_mult": 3.0,
+        "posture_dmg": 30.0,
+        "radius": 270.0,
+        "range_x": 0.0,
+        "delivery": "AOE_SELF",
+        "status": "BURN",
+        "status_duration_s": 4.0,
+        "status_dps_mult": 0.50,
+        "shield_ratio": 0.0
+      },
+      {
+        "id": "glacial_tempest",
+        "display_name": "Tempestade Glacial",
+        "mana_cost": 30.0,
+        "cooldown_s": 5.5,
+        "damage_mult": 2.5,
+        "posture_dmg": 48.0,
+        "radius": 180.0,
+        "range_x": 360.0,
+        "delivery": "CONE_FRONT",
+        "status": "FREEZE",
+        "status_duration_s": 3.0,
+        "status_dps_mult": 0.0,
+        "shield_ratio": 0.0
+      },
+      {
+        "id": "sky_lightning",
+        "display_name": "Raio Celestial",
+        "mana_cost": 35.0,
+        "cooldown_s": 5.0,
+        "damage_mult": 3.8,
+        "posture_dmg": 34.0,
+        "radius": 160.0,
+        "range_x": 720.0,
+        "delivery": "HOMING_STRIKE",
+        "status": "SHOCK",
+        "status_duration_s": 3.5,
+        "status_dps_mult": 0.30,
+        "shield_ratio": 0.0
+      },
+      {
+        "id": "titan_aegis",
+        "display_name": "Egide Titanica",
+        "mana_cost": 40.0,
+        "cooldown_s": 8.5,
+        "damage_mult": 2.4,
+        "posture_dmg": 52.0,
+        "radius": 300.0,
+        "range_x": 0.0,
+        "delivery": "AOE_SHIELD",
+        "status": "STAGGER",
+        "status_duration_s": 1.6,
+        "status_dps_mult": 0.0,
+        "shield_ratio": 0.40
+      }
+    ]
+  },
+  "enemy_archetypes": {
+    "shade_stalker": {
+      "display_name": "Sombra Errante",
+      "hp": 90.0,
+      "dmg": 14.0,
+      "armor": 2.0,
+      "posture_max": 45.0,
+      "speed": 250.0,
+      "attack_range": 105.0,
+      "windup_s": 0.45,
+      "strike_s": 0.12,
+      "recovery_s": 0.65,
+      "gold": 24.0,
+      "gems": 0,
+      "is_boss": false,
+      "is_ranged": false,
+      "projectile_speed": 0.0
+    },
+    "bone_sentinel": {
+      "display_name": "Sentinela de Cinza",
+      "hp": 195.0,
+      "dmg": 24.0,
+      "armor": 14.0,
+      "posture_max": 85.0,
+      "speed": 175.0,
+      "attack_range": 130.0,
+      "windup_s": 0.65,
+      "strike_s": 0.14,
+      "recovery_s": 0.80,
+      "gold": 48.0,
+      "gems": 0,
+      "is_boss": false,
+      "is_ranged": false,
+      "projectile_speed": 0.0
+    },
+    "hex_acolyte": {
+      "display_name": "Acolito Sombrio",
+      "hp": 115.0,
+      "dmg": 20.0,
+      "armor": 4.0,
+      "posture_max": 35.0,
+      "speed": 160.0,
+      "attack_range": 520.0,
+      "windup_s": 0.70,
+      "strike_s": 0.10,
+      "recovery_s": 1.05,
+      "gold": 36.0,
+      "gems": 0,
+      "is_boss": false,
+      "is_ranged": true,
+      "projectile_speed": 640.0
+    },
+    "titan_warden_w1": {
+      "display_name": "Guardiao das Cinzas",
+      "hp": 2600.0,
+      "dmg": 44.0,
+      "armor": 22.0,
+      "posture_max": 230.0,
+      "speed": 220.0,
+      "attack_range": 185.0,
+      "windup_s": 0.65,
+      "strike_s": 0.16,
+      "recovery_s": 0.75,
+      "gold": 620.0,
+      "gems": 35,
+      "is_boss": true,
+      "is_ranged": false,
+      "projectile_speed": 0.0
+    },
+    "abyss_colossus_w2": {
+      "display_name": "Colosso da Forja Rubra",
+      "hp": 8200.0,
+      "dmg": 68.0,
+      "armor": 44.0,
+      "posture_max": 340.0,
+      "speed": 235.0,
+      "attack_range": 205.0,
+      "windup_s": 0.62,
+      "strike_s": 0.16,
+      "recovery_s": 0.70,
+      "gold": 1800.0,
+      "gems": 60,
+      "is_boss": true,
+      "is_ranged": false,
+      "projectile_speed": 0.0
+    }
+  },
+  "worlds": [
+    {
+      "id": "world_1_ashen_citadel",
+      "display_name": "Cidadela das Cinzas",
+      "entry_room_id": "w1_gate",
+      "unlock_after_world_id": "",
+      "rooms": [
+        {
+          "id": "w1_gate",
+          "display_name": "Portao da Cinza",
+          "width": 2200.0,
+          "height": 1080.0,
+          "power_scale": 1.0,
+          "default_spawn_x": 180.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 620.0, "y": 170.0, "w": 260.0, "h": 24.0, "one_way": true},
+            {"x": 1020.0, "y": 310.0, "w": 260.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [],
+          "chests": [
+            {"id": "w1_gate_chest", "x": 1150.0, "y": 334.0, "gold": 90.0, "gems": 15}
+          ],
+          "encounters": [
+            {"archetype": "shade_stalker", "x": 920.0, "y": 0.0},
+            {"archetype": "shade_stalker", "x": 1540.0, "y": 0.0}
+          ],
+          "portals": [
+            {
+              "id": "p_w1_gate_to_catacombs",
+              "x": 2090.0,
+              "y": 0.0,
+              "radius": 95.0,
+              "target_world_id": "world_1_ashen_citadel",
+              "target_room_id": "w1_catacombs",
+              "target_spawn_x": 170.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            }
+          ]
+        },
+        {
+          "id": "w1_catacombs",
+          "display_name": "Catacumbas Sombrias",
+          "width": 2400.0,
+          "height": 1080.0,
+          "power_scale": 1.25,
+          "default_spawn_x": 170.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 760.0, "y": 180.0, "w": 300.0, "h": 24.0, "one_way": true},
+            {"x": 1460.0, "y": 180.0, "w": 300.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [],
+          "chests": [],
+          "encounters": [
+            {"archetype": "shade_stalker", "x": 980.0, "y": 0.0},
+            {"archetype": "bone_sentinel", "x": 1420.0, "y": 0.0},
+            {"archetype": "hex_acolyte", "x": 1610.0, "y": 204.0}
+          ],
+          "portals": [
+            {
+              "id": "p_w1_catacombs_back",
+              "x": 90.0,
+              "y": 0.0,
+              "radius": 90.0,
+              "target_world_id": "world_1_ashen_citadel",
+              "target_room_id": "w1_gate",
+              "target_spawn_x": 1960.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            },
+            {
+              "id": "p_w1_catacombs_to_sanctuary",
+              "x": 2290.0,
+              "y": 0.0,
+              "radius": 95.0,
+              "target_world_id": "world_1_ashen_citadel",
+              "target_room_id": "w1_sanctuary",
+              "target_spawn_x": 170.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            }
+          ]
+        },
+        {
+          "id": "w1_sanctuary",
+          "display_name": "Santuario da Chama",
+          "width": 1920.0,
+          "height": 1080.0,
+          "power_scale": 1.35,
+          "default_spawn_x": 170.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 1220.0, "y": 190.0, "w": 260.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [
+            {"id": "altar_w1_flame", "x": 920.0, "y": 0.0, "radius": 115.0}
+          ],
+          "chests": [
+            {"id": "w1_sanctuary_chest", "x": 1350.0, "y": 214.0, "gold": 140.0, "gems": 20}
+          ],
+          "encounters": [],
+          "portals": [
+            {
+              "id": "p_w1_sanctuary_back",
+              "x": 90.0,
+              "y": 0.0,
+              "radius": 90.0,
+              "target_world_id": "world_1_ashen_citadel",
+              "target_room_id": "w1_catacombs",
+              "target_spawn_x": 2150.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": false,
+              "requires_boss_defeated": false
+            },
+            {
+              "id": "p_w1_sanctuary_to_boss",
+              "x": 1810.0,
+              "y": 0.0,
+              "radius": 95.0,
+              "target_world_id": "world_1_ashen_citadel",
+              "target_room_id": "w1_boss_throne",
+              "target_spawn_x": 200.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": false,
+              "requires_boss_defeated": false
+            }
+          ]
+        },
+        {
+          "id": "w1_boss_throne",
+          "display_name": "Trono do Guardiao de Cinza",
+          "width": 2100.0,
+          "height": 1080.0,
+          "power_scale": 1.4,
+          "default_spawn_x": 200.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 450.0, "y": 175.0, "w": 260.0, "h": 24.0, "one_way": true},
+            {"x": 1360.0, "y": 175.0, "w": 260.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [],
+          "chests": [],
+          "encounters": [
+            {"archetype": "titan_warden_w1", "x": 1480.0, "y": 0.0}
+          ],
+          "portals": [
+            {
+              "id": "p_w1_boss_back",
+              "x": 90.0,
+              "y": 0.0,
+              "radius": 90.0,
+              "target_world_id": "world_1_ashen_citadel",
+              "target_room_id": "w1_sanctuary",
+              "target_spawn_x": 1680.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            },
+            {
+              "id": "p_w1_to_world2",
+              "x": 1980.0,
+              "y": 0.0,
+              "radius": 100.0,
+              "target_world_id": "world_2_crimson_foundry",
+              "target_room_id": "w2_bridge",
+              "target_spawn_x": 190.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "world_2_crimson_foundry",
+      "display_name": "Forja Rubra",
+      "entry_room_id": "w2_bridge",
+      "unlock_after_world_id": "world_1_ashen_citadel",
+      "rooms": [
+        {
+          "id": "w2_bridge",
+          "display_name": "Ponte dos Titas",
+          "width": 2400.0,
+          "height": 1080.0,
+          "power_scale": 1.9,
+          "default_spawn_x": 190.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 720.0, "y": 180.0, "w": 280.0, "h": 24.0, "one_way": true},
+            {"x": 1350.0, "y": 310.0, "w": 280.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [],
+          "chests": [
+            {"id": "w2_bridge_chest", "x": 1490.0, "y": 334.0, "gold": 260.0, "gems": 25}
+          ],
+          "encounters": [
+            {"archetype": "shade_stalker", "x": 960.0, "y": 0.0},
+            {"archetype": "bone_sentinel", "x": 1450.0, "y": 0.0},
+            {"archetype": "hex_acolyte", "x": 1490.0, "y": 334.0}
+          ],
+          "portals": [
+            {
+              "id": "p_w2_to_world1",
+              "x": 90.0,
+              "y": 0.0,
+              "radius": 90.0,
+              "target_world_id": "world_1_ashen_citadel",
+              "target_room_id": "w1_boss_throne",
+              "target_spawn_x": 1820.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            },
+            {
+              "id": "p_w2_bridge_to_foundry",
+              "x": 2290.0,
+              "y": 0.0,
+              "radius": 95.0,
+              "target_world_id": "world_2_crimson_foundry",
+              "target_room_id": "w2_foundry",
+              "target_spawn_x": 170.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            }
+          ]
+        },
+        {
+          "id": "w2_foundry",
+          "display_name": "Camara da Lava",
+          "width": 2500.0,
+          "height": 1080.0,
+          "power_scale": 2.35,
+          "default_spawn_x": 170.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 640.0, "y": 175.0, "w": 300.0, "h": 24.0, "one_way": true},
+            {"x": 1520.0, "y": 175.0, "w": 300.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [],
+          "chests": [],
+          "encounters": [
+            {"archetype": "bone_sentinel", "x": 1050.0, "y": 0.0},
+            {"archetype": "bone_sentinel", "x": 1560.0, "y": 0.0},
+            {"archetype": "hex_acolyte", "x": 780.0, "y": 199.0},
+            {"archetype": "hex_acolyte", "x": 1670.0, "y": 199.0}
+          ],
+          "portals": [
+            {
+              "id": "p_w2_foundry_back",
+              "x": 90.0,
+              "y": 0.0,
+              "radius": 90.0,
+              "target_world_id": "world_2_crimson_foundry",
+              "target_room_id": "w2_bridge",
+              "target_spawn_x": 2150.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            },
+            {
+              "id": "p_w2_foundry_to_altar",
+              "x": 2380.0,
+              "y": 0.0,
+              "radius": 95.0,
+              "target_world_id": "world_2_crimson_foundry",
+              "target_room_id": "w2_altar",
+              "target_spawn_x": 170.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            }
+          ]
+        },
+        {
+          "id": "w2_altar",
+          "display_name": "Altar dos Caidos",
+          "width": 1920.0,
+          "height": 1080.0,
+          "power_scale": 2.5,
+          "default_spawn_x": 170.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 450.0, "y": 190.0, "w": 260.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [
+            {"id": "altar_w2_fallen", "x": 960.0, "y": 0.0, "radius": 115.0}
+          ],
+          "chests": [
+            {"id": "w2_altar_chest", "x": 580.0, "y": 214.0, "gold": 420.0, "gems": 35}
+          ],
+          "encounters": [],
+          "portals": [
+            {
+              "id": "p_w2_altar_back",
+              "x": 90.0,
+              "y": 0.0,
+              "radius": 90.0,
+              "target_world_id": "world_2_crimson_foundry",
+              "target_room_id": "w2_foundry",
+              "target_spawn_x": 2240.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": false,
+              "requires_boss_defeated": false
+            },
+            {
+              "id": "p_w2_altar_to_boss",
+              "x": 1810.0,
+              "y": 0.0,
+              "radius": 95.0,
+              "target_world_id": "world_2_crimson_foundry",
+              "target_room_id": "w2_abyss_throne",
+              "target_spawn_x": 200.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": false,
+              "requires_boss_defeated": false
+            }
+          ]
+        },
+        {
+          "id": "w2_abyss_throne",
+          "display_name": "Abismo do Colosso",
+          "width": 2200.0,
+          "height": 1080.0,
+          "power_scale": 2.6,
+          "default_spawn_x": 200.0,
+          "default_spawn_y": 0.0,
+          "platforms": [
+            {"x": 460.0, "y": 175.0, "w": 280.0, "h": 24.0, "one_way": true},
+            {"x": 1440.0, "y": 175.0, "w": 280.0, "h": 24.0, "one_way": true}
+          ],
+          "altars": [],
+          "chests": [],
+          "encounters": [
+            {"archetype": "abyss_colossus_w2", "x": 1520.0, "y": 0.0}
+          ],
+          "portals": [
+            {
+              "id": "p_w2_boss_back",
+              "x": 90.0,
+              "y": 0.0,
+              "radius": 90.0,
+              "target_world_id": "world_2_crimson_foundry",
+              "target_room_id": "w2_altar",
+              "target_spawn_x": 1680.0,
+              "target_spawn_y": 0.0,
+              "requires_room_cleared": true,
+              "requires_boss_defeated": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

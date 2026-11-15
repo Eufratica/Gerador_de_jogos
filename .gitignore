@@ -1,0 +1,101 @@
+# ==============================================================================
+# PLAYFORGE / TITAN SAIYAN: IDLE CLASH — .gitignore Blindado
+# Regra 4 (AGENTS.md): Zero secrets, keystores, tokens ou artefatos pesados.
+# ==============================================================================
+
+# --- 1. Secrets, Credenciais & Variáveis de Ambiente ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.cer
+*.mobileprovision
+
+# --- 2. Assinatura Android, Play Console & Firebase/Supabase ---
+*.jks
+*.keystore
+keystore.properties
+key.properties
+release-signing.properties
+!*.properties.example
+google-services.json
+GoogleService-Info.plist
+*service-account*.json
+*firebase-adminsdk*.json
+play-store-key*.json
+*credentials*.json
+*secret*.json
+fastlane/*.json
+fastlane/report.xml
+export_presets.local.cfg
+
+# --- 3. Artefatos Pesados de Build Mobile ---
+*.aab
+*.apk
+*.apks
+*.ipa
+*.obb
+*.dex
+*.so
+build/
+dist/
+export/
+android/build/
+.gradle/
+
+# --- 4. Engine (Godot 4.3+ e caches auxiliares) ---
+.godot/
+mono_crash.*.json
+.mono/
+data_*/
+tools/
+
+# --- 5. Factory: Bancos Locais, Vetores, Checkpoints ML & Vídeos 9:16 ---
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/*.sqlite
+data/*.sqlite3
+data/*.sqlite-*
+data/qdrant/
+data/vectors/
+data/checkpoints/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+artifacts/
+renders/
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+
+# --- 6. Tooling Python / .NET / Node & SO ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+bin/
+obj/
+*.user
+node_modules/
+.npm/
+.pnpm-store/
+.vs/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
