@@ -1,0 +1,63 @@
+name: playforge
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: playforge_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-playforge}
+      POSTGRES_USER: ${POSTGRES_USER:-playforge}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-playforge_local_dev}
+    ports:
+      - "127.0.0.1:${PLAYFORGE_PG_PORT:-5434}:5432"
+    volumes:
+      - playforge_pgdata:/var/lib/postgresql/data
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-playforge} -d $${POSTGRES_DB:-playforge}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  valkey:
+    image: valkey/valkey:8.0-alpine
+    container_name: playforge_valkey
+    profiles: ["cache"]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PLAYFORGE_VALKEY_PORT:-6381}:6379"
+    volumes:
+      - playforge_valkeydata:/data
+    mem_limit: 128m
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  factory-runner:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/factory.Dockerfile
+      args:
+        GODOT_VERSION: ${GODOT_VERSION:-4.4-stable}
+    image: playforge-factory-runner:py312-godot44
+    container_name: playforge_factory_runner
+    profiles: ["tools"]
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: ${POSTGRES_DB:-playforge}
+      POSTGRES_USER: ${POSTGRES_USER:-playforge}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-playforge_local_dev}
+    mem_limit: 1024m
+    command: ["sleep", "infinity"]
+
+volumes:
+  playforge_pgdata:
+  playforge_valkeydata:

@@ -1,0 +1,50 @@
+# OpenSpec Configuration — PlayForge Factory (Gerador_de_jogos)
+schema_mode: manual-markdown
+openspec_cli_status:
+  installed: false
+  verified_at: "2026-11-15"
+  note: "openspec, node, npm e pnpm retornaram NOT_FOUND na inspecao da Fase 0; fluxos executados via arquivos Markdown versionados ate avaliacao na Fase 1."
+
+project:
+  repository: Gerador_de_jogos
+  factory_name: PlayForge Factory
+  anchor_game:
+    name: "Zaikor: Zenkai Infinite"
+    historical_name: "TITAN SAIYAN: IDLE CLASH"
+    location: "./ (raiz preservada ate ADR futuro)"
+    status: "v0.4.0-playable-slice (Sprint 4B arquivado)"
+  governance_contract: "AGENTS.md"
+  session_state: "docs/SESSION_STATE.md"
+
+stack:
+  game_engine: "Godot 4.4.stable (GDScript, headless CLI em tools/godot/)"
+  factory_backend_target: "Python + FastAPI + LangGraph (planejado Fases 2-6)"
+  local_ai_target: "Ollama (planejado Fase 6)"
+  automation_target: "n8n Community Edition + MCP (planejado Fases 6-9)"
+  database_target: "PostgreSQL + pgvector + Valkey (fabrica) / SQLite (jogos)"
+  infrastructure_target: "Windows 11 + WSL2 Ubuntu 24.04 LTS + Docker Compose + Dev Containers"
+
+policies:
+  financial: "ZERO COST / FREE FIRST (FREE_TIER_POLICY.md) — APIs pagas proibidas como fallback"
+  architecture: "Hexagonal (Ports & Adapters); separacao estrita fabrica vs jogos e core vs engine/adapters"
+  quality: "Fail-Closed; nenhum criterio aprovado sem execucao real observada"
+  security: "Codigo gerado por IA e fontes web sao nao confiaveis; zero segredos no Git"
+  preservation: "Preservar openspec/changes/001..006 e openspec/archive/002,003,005,006 intactos"
+
+workflows:
+  legacy_game_changes: "ENTENDER (SDD) -> IMPLEMENTAR -> REVISAR & AUDITAR TESTES -> PROMOVER & ARQUIVAR"
+  factory_target_cycle:
+    - explore
+    - propose
+    - specs
+    - design
+    - tasks
+    - apply
+    - verify
+    - sync
+    - archive
+  available_now:
+    - "Criacao/edicao versionada de specs em openspec/specs/ e changes em openspec/changes/"
+    - "Validacao headless via Godot 4.4 CLI para o jogo-ancora"
+  unavailable_until_cli_install:
+    - "Comandos automatizados do openspec CLI (nao instalado)"

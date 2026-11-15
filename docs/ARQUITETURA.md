@@ -1,6 +1,7 @@
-# ARQUITETURA VIVA — PLAYFORGE / TITAN SAIYAN: IDLE CLASH
+# ARQUITETURA VIVA — JOGO-ÂNCORA (`PLAYFORGE / TITAN SAIYAN ➔ ZAIKOR: ZENKAI INFINITE`)
 
-> **Status Atual:** `Bloco 1 Arquivado (002 & 003) | Sprint 4A Arquivado (005) | Sprint 4B Arquivado (006 — Zaikor: Zenkai Infinite)` | **Próximo:** `Sprint 4C / OpenSpec 007 (AdMob+UMP, Play Billing v6+, Supabase & Android .aab)`  
+> **Nota de Preservação (Fase 0):** Este arquivo documenta a arquitetura real implantada e o histórico OpenSpec (`001`–`006`) do **jogo-âncora** na raiz do repositório. A arquitetura macro dual da **PlayForge Factory** (separando fábrica e jogos) passou a ser consolidada em [ARCHITECTURE.md](ARCHITECTURE.md), com pendências nominais/estruturais registradas em [DECISIONS.md](../DECISIONS.md).
+> **Status Atual do Jogo-Âncora:** `Bloco 1 Arquivado (002 & 003) | Sprint 4A Arquivado (005) | Sprint 4B Arquivado (006 — Zaikor: Zenkai Infinite)` | **Próximo (Jogo 1):** `Sprint 4C (aguardando priorização em PEND-001)`  
 > **Contrato Regente:** [AGENTS.md](../AGENTS.md)
 
 ---

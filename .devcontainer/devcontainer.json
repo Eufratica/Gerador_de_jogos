@@ -1,0 +1,19 @@
+{
+  "name": "PlayForge Factory (Python 3.12 + Godot 4.4 Headless)",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "factory-runner",
+  "runServices": ["db"],
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "geequlim.godot-tools"
+      ]
+    }
+  },
+  "postCreateCommand": "python3 --version && godot --headless --version && git --version"
+}
