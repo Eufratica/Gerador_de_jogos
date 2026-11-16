@@ -1,0 +1,77 @@
+{
+  "template_manifest_schema_version": 1,
+  "template_id": "godot-2d-action-rpg",
+  "name": "Godot 2D Action RPG Base",
+  "template_version": "1.0.0",
+  "engine": "godot",
+  "engine_version": "4.4-stable",
+  "supported_genres": [
+    "action-rpg",
+    "idle-rpg"
+  ],
+  "supported_platforms": [
+    "android",
+    "windows",
+    "linux"
+  ],
+  "status": "ACTIVE",
+  "spec_schema_version": 1,
+  "license": "MIT",
+  "description": "Template base Godot 4.4 / GDScript extraido de modulos puros do projeto-ancora Zaikor sob separacao Ports & Adapters, com BigNum, SeededRng, loop 2D data-driven, checkpoint local fail-closed e suite headless < 1s.",
+  "documentation": "README.md",
+  "available_systems": [
+    "deterministic-big-num",
+    "seeded-prng",
+    "2d-room-combat-loop",
+    "versioned-local-checkpoint",
+    "headless-unit-harness"
+  ],
+  "reusable_components": [
+    "src/core/big_num.gd",
+    "src/core/seeded_rng.gd",
+    "src/core/game_loop_core.gd",
+    "src/engine/local_checkpoint_store.gd",
+    "tests/unit/test_harness.gd"
+  ],
+  "asset_slots": {
+    "game_config": {
+      "type": "json",
+      "required": true,
+      "path": "config/template_defaults.json"
+    },
+    "hero_visual": {
+      "type": "sprite_2d_optional",
+      "required": false,
+      "fallback": "procedural_rect"
+    },
+    "enemy_visual": {
+      "type": "sprite_2d_optional",
+      "required": false,
+      "fallback": "procedural_rect"
+    }
+  },
+  "dependencies": [],
+  "allowed_extensions": [
+    ".gd",
+    ".godot",
+    ".json",
+    ".tscn"
+  ],
+  "file_structure": [
+    "project.godot",
+    "config/template_defaults.json",
+    "src/core/big_num.gd",
+    "src/core/seeded_rng.gd",
+    "src/core/game_loop_core.gd",
+    "src/engine/local_checkpoint_store.gd",
+    "src/engine/main.gd",
+    "src/engine/main.tscn",
+    "tests/unit/test_harness.gd",
+    "tests/unit/run_template_tests.gd"
+  ],
+  "tests": {
+    "runner": "godot-headless",
+    "script": "res://tests/unit/run_template_tests.gd"
+  },
+  "demo_project_path": "demo"
+}

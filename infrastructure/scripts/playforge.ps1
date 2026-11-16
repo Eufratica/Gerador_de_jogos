@@ -1,9 +1,9 @@
 param(
     [Parameter(Position = 0)]
     [ValidateSet(
-        "env-init", "config", "build-runner", "build", "up", "up-cache",
+        "env-init", "config", "build-runner", "build", "up", "up-cache", "up-automation",
         "down", "restart", "status", "logs", "health", "db-check",
-        "test-win", "test-linux", "backup-db", "restore-db", "help"
+        "test-win", "test-linux", "test-factory", "backup-db", "restore-db", "help"
     )]
     [string]$Command = "help",
 
@@ -30,10 +30,12 @@ Comandos Windows / Gerais:
   env-init                         Cria .env local via WSL2 (nao sobrescreve existente)
   config                           Valida docker-compose.yml via WSL2
   build-runner | build             Constroi imagem factory-runner no Docker/WSL2
-  up | up-cache | down | restart   Gerencia containers PlayForge no Docker/WSL2
+  up | up-cache | up-automation    Sobe PostgreSQL, Valkey ou n8n Community (127.0.0.1:5679)
+  down | restart                   Para ou reinicia containers PlayForge no Docker/WSL2
   status | logs [servico]          Inspeciona containers PlayForge
   health | db-check                Verifica PostgreSQL + extensao pgvector
   test-linux                       Executa suite Godot headless dentro do container Linux
+  test-factory                     Executa suite Python do Factory Core no container Linux
   backup-db [arquivo.sql]          Gera backup SQL em build/backups/
   restore-db <arquivo> -ConfirmRestore
                                    Restaura backup SQL (exige -ConfirmRestore)

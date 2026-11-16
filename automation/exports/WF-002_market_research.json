@@ -1,0 +1,182 @@
+{
+  "active": false,
+  "connections": {
+    "Call PlayForge Bridge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Gate Check",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Gate Check": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Respond Approved",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Respond Blocked",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call PlayForge Bridge",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "d83ce1aa-090f-5fa3-8244-aa231f7e5900",
+  "meta": {
+    "approvalStage": null,
+    "cliCommand": "automation-trigger WF-002",
+    "description": "Consolidacao sanitizada anti-injection de referencias do genero.",
+    "instanceId": "playforge-factory-local",
+    "requiresHumanGate": false,
+    "schemaVersion": 1,
+    "workflowId": "WF-002",
+    "zeroCostPolicy": "ENFORCED_LOCAL_ONLY"
+  },
+  "name": "WF-002: Market Research",
+  "nodes": [
+    {
+      "id": "0fe67310-3fbf-52ee-b04a-7f714d6da1b0",
+      "name": "Webhook Trigger",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "playforge/WF-002",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        240,
+        300
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.0,
+      "webhookId": "a72cf462-2ed4-56e4-b21b-89573dce12ea"
+    },
+    {
+      "id": "82635cdd-f012-5c34-a126-81cd7b85b540",
+      "name": "Call PlayForge Bridge",
+      "parameters": {
+        "authentication": "none",
+        "jsonBody": "={{ $json.body ?? $json }}",
+        "method": "POST",
+        "options": {
+          "timeout": 30000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://127.0.0.1:8787/webhook/WF-002"
+      },
+      "position": [
+        520,
+        300
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "54f27354-c17e-59aa-8249-ee9d5127d723",
+      "name": "Gate Check",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "7500420c-0ec5-58f0-8a7b-ed93826a05e7",
+              "leftValue": "={{ $json.gate_cleared ?? $json.passed ?? false }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        800,
+        300
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "ddb1f7ee-2e90-59b8-96b3-2b0853c22501",
+      "name": "Respond Approved",
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        220
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "6db909df-7947-5218-89d8-dab9ab89e83e",
+      "name": "Respond Blocked",
+      "parameters": {
+        "options": {
+          "responseCode": 422
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        420
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "playforge"
+    },
+    {
+      "name": "research"
+    },
+    {
+      "name": "security"
+    }
+  ],
+  "versionId": "1ee7f4be-7032-5d1e-b66e-d9df69054a8e"
+}

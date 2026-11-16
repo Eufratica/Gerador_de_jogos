@@ -1,0 +1,182 @@
+{
+  "active": false,
+  "connections": {
+    "Call PlayForge Bridge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Gate Check",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Gate Check": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Respond Approved",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Respond Blocked",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call PlayForge Bridge",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "d259b520-5ed2-5019-bef2-5c50009ac388",
+  "meta": {
+    "approvalStage": null,
+    "cliCommand": "gdd-generate",
+    "description": "Geracao versionada do GDD de 25 secoes no workspace do projeto.",
+    "instanceId": "playforge-factory-local",
+    "requiresHumanGate": false,
+    "schemaVersion": 1,
+    "workflowId": "WF-003",
+    "zeroCostPolicy": "ENFORCED_LOCAL_ONLY"
+  },
+  "name": "WF-003: Game Design Document",
+  "nodes": [
+    {
+      "id": "773c1314-8655-579b-8844-64d9551db2cf",
+      "name": "Webhook Trigger",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "playforge/WF-003",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        240,
+        300
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.0,
+      "webhookId": "f08ee12b-be06-5c4e-be1e-07742ebcb052"
+    },
+    {
+      "id": "8933595d-7abe-538a-8e5c-da4ec7a33736",
+      "name": "Call PlayForge Bridge",
+      "parameters": {
+        "authentication": "none",
+        "jsonBody": "={{ $json.body ?? $json }}",
+        "method": "POST",
+        "options": {
+          "timeout": 30000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://127.0.0.1:8787/webhook/WF-003"
+      },
+      "position": [
+        520,
+        300
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "210e5100-bb93-5f33-9c4c-a835b124a950",
+      "name": "Gate Check",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "de740173-69cc-529e-ab02-4830f6a38b5e",
+              "leftValue": "={{ $json.gate_cleared ?? $json.passed ?? false }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        800,
+        300
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "4f3cc23b-571d-552a-a0cb-8440af7b5e66",
+      "name": "Respond Approved",
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        220
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "5ac2929c-956e-5901-acb6-70c955cbed82",
+      "name": "Respond Blocked",
+      "parameters": {
+        "options": {
+          "responseCode": 422
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        420
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "playforge"
+    },
+    {
+      "name": "design"
+    },
+    {
+      "name": "gdd"
+    }
+  ],
+  "versionId": "966f8dab-8f1c-5f4b-b678-57104c741629"
+}

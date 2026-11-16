@@ -1,0 +1,182 @@
+{
+  "active": false,
+  "connections": {
+    "Call PlayForge Bridge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Gate Check",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Gate Check": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Respond Approved",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Respond Blocked",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call PlayForge Bridge",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "03092038-86a7-5869-83af-445829a8eeea",
+  "meta": {
+    "approvalStage": null,
+    "cliCommand": "qa-balance",
+    "description": "Simulacao deterministica por genero e deteccao de soft-lock.",
+    "instanceId": "playforge-factory-local",
+    "requiresHumanGate": false,
+    "schemaVersion": 1,
+    "workflowId": "WF-013",
+    "zeroCostPolicy": "ENFORCED_LOCAL_ONLY"
+  },
+  "name": "WF-013: Balance Audit",
+  "nodes": [
+    {
+      "id": "2c754bed-6f78-5cde-ae8f-6391b426a081",
+      "name": "Webhook Trigger",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "playforge/WF-013",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        240,
+        300
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.0,
+      "webhookId": "9d3df976-2460-5861-ba39-92538d830761"
+    },
+    {
+      "id": "0ce2b16f-c452-51e0-ba3c-781dffb09e0c",
+      "name": "Call PlayForge Bridge",
+      "parameters": {
+        "authentication": "none",
+        "jsonBody": "={{ $json.body ?? $json }}",
+        "method": "POST",
+        "options": {
+          "timeout": 30000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://127.0.0.1:8787/webhook/WF-013"
+      },
+      "position": [
+        520,
+        300
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "24e87f40-f306-560c-b746-ad0fa9586851",
+      "name": "Gate Check",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "d58b2b40-6809-5b2e-bce2-da7bde19fb84",
+              "leftValue": "={{ $json.gate_cleared ?? $json.passed ?? false }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        800,
+        300
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "2450ac8a-9680-5f96-9490-af0cc18de5b9",
+      "name": "Respond Approved",
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        220
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "446e6679-3064-5c74-9209-14ef4d47b310",
+      "name": "Respond Blocked",
+      "parameters": {
+        "options": {
+          "responseCode": 422
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        420
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "playforge"
+    },
+    {
+      "name": "balance"
+    },
+    {
+      "name": "qa"
+    }
+  ],
+  "versionId": "567cf77b-a9b3-5a0e-881a-a958c2b30c53"
+}

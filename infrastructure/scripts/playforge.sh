@@ -20,6 +20,8 @@ load_env_defaults() {
   POSTGRES_PASSWORD="${POSTGRES_PASSWORD:-playforge_local_dev}"
   PLAYFORGE_PG_PORT="${PLAYFORGE_PG_PORT:-5434}"
   PLAYFORGE_VALKEY_PORT="${PLAYFORGE_VALKEY_PORT:-6381}"
+  PLAYFORGE_N8N_PORT="${PLAYFORGE_N8N_PORT:-5679}"
+  PLAYFORGE_AUTOMATION_BRIDGE_PORT="${PLAYFORGE_AUTOMATION_BRIDGE_PORT:-8787}"
   GODOT_VERSION="${GODOT_VERSION:-4.4-stable}"
 }
 
@@ -37,12 +39,14 @@ Comandos:
   build-runner | build             Constroi a imagem factory-runner (Python 3.12 + Godot 4.4)
   up                               Sobe o banco PostgreSQL + pgvector em background
   up-cache                         Sobe PostgreSQL + pgvector e Valkey (profile cache)
+  up-automation                    Sobe n8n Community opcional (profile automation, 127.0.0.1:5679)
   down                             Para os servicos do PlayForge sem apagar volumes
   restart                          Reinicia os servicos do PlayForge
   status                           Mostra status dos containers PlayForge
   logs [servico]                   Exibe ultimas 100 linhas de log
   health | db-check                Verifica saude do PostgreSQL e extensao pgvector
   test-linux                       Executa testes Godot headless dentro do container Linux
+  test-factory                     Executa testes Python do Factory Core dentro do container Linux
   backup-db [arquivo.sql]          Gera dump SQL local em build/backups/ (ignorado no Git)
   restore-db <arquivo> --confirm-restore
                                    Restaura dump SQL (exige confirmacao explicita)
@@ -69,8 +73,8 @@ case "${cmd}" in
     ;;
 
   config)
-    compose_cmd --profile cache --profile tools config >/dev/null
-    echo "[playforge] docker-compose.yml valido (profiles default, cache, tools)."
+    compose_cmd --profile cache --profile tools --profile automation config >/dev/null
+    echo "[playforge] docker-compose.yml valido (profiles default, cache, tools, automation)."
     ;;
 
   build-runner|build)
@@ -85,8 +89,12 @@ case "${cmd}" in
     compose_cmd --profile cache up -d db valkey
     ;;
 
+  up-automation)
+    compose_cmd --profile automation up -d n8n
+    ;;
+
   down)
-    compose_cmd --profile cache --profile tools down
+    compose_cmd --profile cache --profile tools --profile automation down
     ;;
 
   restart)
@@ -94,7 +102,7 @@ case "${cmd}" in
     ;;
 
   status)
-    compose_cmd --profile cache --profile tools ps
+    compose_cmd --profile cache --profile tools --profile automation ps
     ;;
 
   logs)
@@ -118,6 +126,10 @@ case "${cmd}" in
       echo "=== Engine Boot Gate (Linux Headless) ==="
       godot --headless --no-header --path /workspace --script res://tests/integration/verify_engine_boot.gd -- --save-path=/tmp/playforge_boot_verify.json
     '
+    ;;
+
+  test-factory)
+    compose_cmd --profile tools run --rm --no-deps factory-runner python3 -m unittest discover -s /workspace/factory/tests -v
     ;;
 
   backup-db)

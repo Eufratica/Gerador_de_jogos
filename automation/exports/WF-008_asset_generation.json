@@ -1,0 +1,182 @@
+{
+  "active": false,
+  "connections": {
+    "Call PlayForge Bridge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Gate Check",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Gate Check": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Respond Approved",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Respond Blocked",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call PlayForge Bridge",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "cb68a0c6-a180-53a3-8a07-f8dbd31093c2",
+  "meta": {
+    "approvalStage": null,
+    "cliCommand": "asset-generate-pack",
+    "description": "Producao procedural zero-cost e auditoria de licenca/formato.",
+    "instanceId": "playforge-factory-local",
+    "requiresHumanGate": false,
+    "schemaVersion": 1,
+    "workflowId": "WF-008",
+    "zeroCostPolicy": "ENFORCED_LOCAL_ONLY"
+  },
+  "name": "WF-008: Asset Generation",
+  "nodes": [
+    {
+      "id": "a77823c0-e74a-5a48-aa4c-e7f4d5a6c98d",
+      "name": "Webhook Trigger",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "playforge/WF-008",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        240,
+        300
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.0,
+      "webhookId": "361e31ed-851c-568e-a946-21ec30d559c8"
+    },
+    {
+      "id": "383cdcaf-113a-5624-8408-db88f34a2c92",
+      "name": "Call PlayForge Bridge",
+      "parameters": {
+        "authentication": "none",
+        "jsonBody": "={{ $json.body ?? $json }}",
+        "method": "POST",
+        "options": {
+          "timeout": 30000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://127.0.0.1:8787/webhook/WF-008"
+      },
+      "position": [
+        520,
+        300
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "b0769b15-8c65-556e-8d99-4eebad6bad50",
+      "name": "Gate Check",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "3bc1e4e3-57c2-50d6-baa7-c39b72947a87",
+              "leftValue": "={{ $json.gate_cleared ?? $json.passed ?? false }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        800,
+        300
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "8c6e8697-4999-5d75-94c0-47e29e6915e5",
+      "name": "Respond Approved",
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        220
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "6f27263b-29fd-5871-b6a6-886694c579b8",
+      "name": "Respond Blocked",
+      "parameters": {
+        "options": {
+          "responseCode": 422
+        },
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "position": [
+        1080,
+        420
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "playforge"
+    },
+    {
+      "name": "assets"
+    },
+    {
+      "name": "audio"
+    }
+  ],
+  "versionId": "8d886a16-e40a-57f5-8407-47645e082f60"
+}

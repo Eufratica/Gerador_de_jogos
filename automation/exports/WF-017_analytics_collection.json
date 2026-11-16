@@ -1,0 +1,173 @@
+{
+  "active": false,
+  "connections": {
+    "Call PlayForge Bridge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Gate Check",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Gate Check": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Audit Passed",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Escalate Alert",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Call PlayForge Bridge",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "9bf77c1a-1ba9-56a4-a22f-4d6aeec02858",
+  "meta": {
+    "approvalStage": null,
+    "cliCommand": "automation-trigger WF-017",
+    "description": "Agregacao local de metricas sem PII a partir de relatorios reais.",
+    "instanceId": "playforge-factory-local",
+    "requiresHumanGate": false,
+    "schemaVersion": 1,
+    "workflowId": "WF-017",
+    "zeroCostPolicy": "ENFORCED_LOCAL_ONLY"
+  },
+  "name": "WF-017: Analytics Collection",
+  "nodes": [
+    {
+      "id": "f8aba5c2-0e8f-50f7-a126-c018cd09a580",
+      "name": "Schedule Trigger",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      },
+      "position": [
+        240,
+        300
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "e71ff078-5a74-56df-ad71-7a5ad9ecdb1f",
+      "name": "Call PlayForge Bridge",
+      "parameters": {
+        "authentication": "none",
+        "jsonBody": "={{ $json.body ?? $json }}",
+        "method": "POST",
+        "options": {
+          "timeout": 30000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://127.0.0.1:8787/webhook/WF-017"
+      },
+      "position": [
+        520,
+        300
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "7054d684-07e6-527b-9ad1-88dad7c7d73f",
+      "name": "Gate Check",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "f9461c26-98ff-52ff-9d77-932368fd0987",
+              "leftValue": "={{ $json.gate_cleared ?? $json.passed ?? false }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        800,
+        300
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "391cb814-13ac-5840-96eb-7a5396205f11",
+      "name": "Audit Passed",
+      "parameters": {},
+      "position": [
+        1080,
+        220
+      ],
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1
+    },
+    {
+      "id": "b1bc9987-0930-5ffc-b345-837739255292",
+      "name": "Escalate Alert",
+      "parameters": {},
+      "position": [
+        1080,
+        420
+      ],
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "playforge"
+    },
+    {
+      "name": "analytics"
+    },
+    {
+      "name": "privacy"
+    }
+  ],
+  "versionId": "f762accd-7436-51a2-abac-d5e8f1f88004"
+}

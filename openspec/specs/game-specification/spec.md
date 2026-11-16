@@ -1,7 +1,7 @@
 # Capability Specification: `game-specification`
 
 - **Capability ID:** `game-specification`
-- **Status:** `PLANNED_PHASE_3` *(Schema e engine genérica planejados; inspiração empírica nos contratos do jogo-âncora)*
+- **Status:** `IMPLEMENTED_PHASE_3` *(Engine de especificações, schemas tipados, validador fail-closed e fluxo de aprovação SHA-256 implementados em `factory/playforge/spec_engine/` com 28 testes dedicados)*
 - **Referência Técnica:** [docs/GAME_SPECIFICATION_SCHEMA.md](../../docs/GAME_SPECIFICATION_SCHEMA.md)
 
 ## Requisitos Contratuais

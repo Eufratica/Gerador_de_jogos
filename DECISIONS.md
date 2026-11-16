@@ -52,4 +52,25 @@ Todas as pendências `PEND-001` a `PEND-005` foram aprovadas pelo operador (`"ap
 
 ## 3. Decisões Pendentes Atuais
 
-- Nenhuma pendência aberta na passagem da Fase 0 para a Fase 1. *(Novas pendências estruturais da Fase 1+ serão registradas aqui antes de execução.)*
+- Nenhuma pendência estrutural não-documentada no início da Fase 6 *(novas pendências críticas futuras continuam sendo registradas aqui antes de execução)*.
+
+### ADR-009 — Ponte Stdlib-First para Model Router (Ollama HTTP), Orquestração Checkpointed (SQLite) e Servidores MCP na Fase 6
+
+- **Status:** `APROVADA` *(Fase 6 — `013-phase6-ai-engine-agents-mcp`)*
+- **Contexto Observado:** Auditoria real do ambiente confirmou Python `3.13.18`, SQLite `3.53.1`, CPU Intel `i5-1135G7` (4 cores / 8 threads), `Intel Iris Xe` sem GPU dedicada, ~`12 GB` RAM no host (~`5.7Gi` RAM + `2.0Gi` swap no WSL2), ausência do binário `ollama` e ausência de pacotes pip externos (`langgraph`, `mcp`, `httpx`, `requests`, `pydantic`).
+- **Decisão:** Implementar a Fase 6 em **Python puro (stdlib apenas: `urllib.request`, `sqlite3`, `json`)** seguindo os protocolos reais HTTP do Ollama (`127.0.0.1:11434`), semântica de grafo com estado persistente em SQLite e interrupção humana compatível com `LangGraph`, e protocolo `JSON-RPC 2.0` via `stdio` para `MCP`, mantendo interfaces explícitas (*Ports & Adapters*) para acoplar SDKs externos (`langgraph`, `mcp`) e daemon Ollama local quando instalados em etapa futura.
+- **Regras Derivadas:** Roteamento por hardware libera apenas tiers `S`/`M` em CPU 12 GB (`Tier L` bloqueado); endpoints externos não-locais são proibidos (`PolicyViolationError`) e indisponibilidade do Ollama local falha fechado (`ProviderUnavailableError`) sem fallback pago (`SEC-02`).
+
+### ADR-010 — Expansão Multi-Engine Incremental via `Ports & Adapters` Preservando Fases 0–9 (`OpenSpec 017+`)
+
+- **Status:** `APROVADA` *(Autorização humana em `2026-11-15` para consolidar requisitos do Master Engineering Prompt e prosseguir incrementalmente)*
+- **Contexto Observado:** Ao final da Fase 9 (`100` testes Python + suíte `Zaikor` `229` assertions passando), o núcleo da fábrica (`spec_engine`, `template_registry`, `generator`, `qa_engine`, `asset_pipeline`) operava acoplado a `Godot 4.x` e formatos 2D/áudio (`PNG`, `WAV`, `OGG`). A expansão multi-engine solicitada introduz: seleção inteligente ponderada por **14 critérios** (**Godot**, **Unity**, **Unreal Engine**), orquestração de ferramentas (`Blender`, `FFmpeg`, `FMOD`/`Wwise` opcionais), formatos 3D/mídia (`GLTF/GLB`, `FBX`, `OBJ`, `JPEG`, `MP3`), Build Manager independente de engine, módulos reutilizáveis de Gameplay e documentos ausentes (`VERSION`, `docs/HANDOFF.md`, `docs/ENGINE_MATRIX.md`, `docs/TESTING.md`).
+- **Decisão:**
+  1. Preservar **100%** dos módulos funcionais das Fases 0–9 e do jogo-âncora `Zaikor` (`ADR-006`) sem reescrita destrutiva.
+  2. Evoluir por incrementos auditados via **Ports & Adapters**:
+     - `P1`: `Engine Selection and Orchestration System` + `EngineAdapter` (`GodotAdapter` ativo + `UnityAdapter` / `UnrealAdapter` com geração estrutural e bloqueio *fail-closed* caso toolchain não esteja instalada no host) + evolução retrocompatível da `GameSpecification`.
+     - `P2`: Orquestração de ferramentas (`Blender`, `FFmpeg`, `FMOD`/`Wwise` opcionais) e suporte a `GLTF/GLB`, `FBX`, `OBJ`, `JPEG`, `MP3` e materiais PBR.
+     - `P3`: Build Manager multiplataforma independente de engine (antiga Fase 10).
+     - `P4`: Aprofundamento Unity/Unreal + catálogo de sistemas de gameplay reutilizáveis (Action 3D, RPG, Open World sob demanda) + atualização de contratos dos 14 agentes.
+     - `P5`: RAG (`pgvector`), telemetria e otimização contínua (antiga Fase 11).
+  3. **Veracidade de Hardware e Licenças (`Free First`):** Como o host possui `11,74 GB` RAM e GPU integrada sem VRAM dedicada, e Unity Hub / Epic Games Launcher exigem conta/EULA/instalação massiva externa, ferramentas leves open-source (`Blender`, `FFmpeg`, `Ollama`) são instaláveis localmente via `winget`, enquanto `UnityAdapter` e `UnrealAdapter` nunca simulam compilação sem detectar a engine instalada localmente.

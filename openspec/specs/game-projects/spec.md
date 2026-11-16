@@ -1,7 +1,7 @@
 # Capability Specification: `game-projects`
 
 - **Capability ID:** `game-projects`
-- **Status:** `PARTIAL_ANCHOR_ONLY` *(1 jogo-âncora operacional na raiz; gerenciador multi-projeto planejado para Fase 2)*
+- **Status:** `IMPLEMENTED_PHASE_2` *(Jogo-âncora protegido em raiz e gerenciador multi-projeto com isolamento em `games/<project_id>/` implementado em `factory/playforge/`)*
 - **Referência Técnica:** [docs/ARQUITETURA.md](../../docs/ARQUITETURA.md) | [DECISIONS.md](../../DECISIONS.md) (`PEND-001`, `PEND-002`)
 
 ## Requisitos de Isolamento Multi-Projeto

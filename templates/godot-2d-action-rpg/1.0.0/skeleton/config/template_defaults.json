@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "game_id": "template-demo",
+  "game_name": "PlayForge Action 2D Base",
+  "genre": "action-rpg",
+  "hero": {
+    "name": "Protagonista",
+    "base_hp": 100.0,
+    "base_attack": 15.0,
+    "move_speed": 260.0
+  },
+  "worlds": [
+    {
+      "world_id": "world_1",
+      "name": "Zona Inicial",
+      "rooms": [
+        {
+          "room_id": "room_1",
+          "name": "Entrada",
+          "enemy_name": "Sentinela Menor",
+          "enemy_hp": 40.0,
+          "enemy_attack": 5.0,
+          "reward_gold": 25.0,
+          "next_room_id": "room_2"
+        },
+        {
+          "room_id": "room_2",
+          "name": "Camara do Chefe",
+          "enemy_name": "Guardiao",
+          "enemy_hp": 90.0,
+          "enemy_attack": 10.0,
+          "reward_gold": 100.0,
+          "next_room_id": ""
+        }
+      ]
+    }
+  ]
+}

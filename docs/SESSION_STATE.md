@@ -6,29 +6,34 @@
 
 ## 1. Snapshot Atual do Estado
 
-- **Fase Atual:** `FASE 1 — AMBIENTE REPRODUZÍVEL` **concluída e arquivada** (`008`). **Aguardando aprovação humana para iniciar a Fase 2** (Core da Fábrica & Multi-Projeto).
-- **Jogo-Âncora:** `Zaikor: Zenkai Infinite` (`v0.4.0-playable-slice`), preservado na raiz (ADR-006); `git diff --stat -- project.godot src/ config/ tests/ .gitignore` vazio.
-- **Base Git:** `main` @ `cab6ee8` (`origin/main`). Fases 0 e 1 estão no working tree; commit local feito ao final desta sessão (ver `git log`), sem `push`.
-- **Decisões:** `ADR-001`–`ADR-008` em [DECISIONS.md](../DECISIONS.md); sem pendências abertas.
+- **Versão (`VERSION`):** `1.0.0`
+- **Fases & Incrementos Concluídos:** **Fases 0–11 e Incrementos `P1`–`P5` (`OpenSpec 007`–`021`) concluídos e arquivados** sob `ADR-010`.
+- **Jogo-Âncora:** `Zaikor: Zenkai Infinite` (`v0.4.0-playable-slice`), preservado integralmente na raiz (`ADR-006`); `git diff --stat -- project.godot src/ config/ tests/ .gitignore` vazio.
+- **Ferramentas Locais Reais Detectadas no Host Windows 11 (`11.74 GB RAM`, `8 threads`, GPU integrada `Intel Iris Xe`):**
+  - `Godot 4.4.stable.official.4c311cbee`: `tools/godot/Godot_v4.4-stable_win64_console.exe`
+  - `Blender 5.3`: `C:/Program Files/Blender Foundation/Blender 5.3/blender.exe`
+  - `FFmpeg 9.0.2`: instalado via `winget` (`Gyan.FFmpeg`)
+  - `Ollama 0.40.16`: instalado via `winget` (`%LOCALAPPDATA%/Programs/Ollama/ollama.exe`)
+  - `Unity` e `Unreal Engine 5`: **não instalados** neste host (adaptadores *Ports & Adapters* geram scaffold + validação estrutural e falham fechado com `EngineToolchainUnavailableError` quando execução/compilação é solicitada sem editor).
 
-## 2. Evidências da Última Verificação (após a última edição de arquivos)
+## 2. Capacidades Implementadas (`017`–`021`)
 
-| Verificação | Resultado |
-| :--- | :--- |
-| `playforge.ps1 test-win` (Godot 4.4 Windows) | `229 assertions \| Failed: 0` (`477.25 ms`); Action Balance `PASSED` (`463.77 ms`); Engine Boot `14 assertions \| Failed: 0` |
-| `playforge.sh test-linux` (container, Python 3.12.16 + Godot 4.4) | `229 assertions \| Failed: 0` (`276.09 ms`); Action Balance `PASSED` (`508.67 ms`); Engine Boot `14 assertions \| Failed: 0` |
-| `playforge.sh health` | `accepting connections`; extensão `vector 0.8.7` |
-| `playforge.sh status` | `playforge_db` healthy (`127.0.0.1:5434`); `playforge_valkey` healthy (`127.0.0.1:6381`) |
-| `restore-db` sem `-ConfirmRestore` | Bloqueado (fail-closed); com a flag, restore OK (verificado antes das edições finais de docs) |
-| Simulador 72h (`run_balance_verifier.gd`) | Não re-executado (~512 s; auditado na `003`) |
+| Incremento / Fase | OpenSpec | Módulos Principais | Suíte Dedicada |
+| :--- | :--- | :--- | :--- |
+| **P1 (`Engine Orchestrator`)** | `017` | `factory/playforge/engine_orchestrator/`, `spec_engine/` v2 | `test_engine_orchestrator.py` (10 testes) |
+| **P2 (`Tool & 3D Assets`)** | `018` | `factory/playforge/asset_pipeline/` (`glTF/GLB/OBJ/FBX/JPEG/MP3/PBR`) | `test_tool_and_3d_assets.py` (10 testes) |
+| **P3 / Fase 10 (`Build Manager`)** | `019` | `factory/playforge/build_system/` (`SHA-256`, `verify_build`, `approve_release`) | `test_build_system.py` (7 testes) |
+| **P4 (`Gameplay & Seção 10`)** | `020` | `factory/playforge/gameplay_systems/`, `ai/agents.py` (13 papéis) | `test_gameplay_and_agents.py` (5 testes) |
+| **P5 / Fase 11 (`Evolution`)** | `021` | `factory/playforge/evolution/` (`LocalRagMemory`, `OptimizationAdvisor`, `FactoryDashboard`) | `test_evolution_phase11.py` (4 testes) |
 
-## 3. Ambiente e Restrições
+## 3. Evidências Executáveis
 
-- Detalhes de host/WSL2/portas e operação: [INFRASTRUCTURE.md](INFRASTRUCTURE.md).
-- Containers do usuário (`8000`, `5678`, `1880`, `6333/6334`, `5433`, `6380`) não foram alterados.
-- No sandbox do agente, `wsl`/Docker exigem execução fora do sandbox; `.env` foi criado via WSL (escrita pelo sandbox Windows é negada).
-- Containers PlayForge (`playforge_db`, `playforge_valkey`) permanecem em execução.
+- `factory/tests/`: **136 testes Python** (`test_factory_core` 19 + `test_spec_engine` 28 + `test_template_registry` 15 + `test_game_generator` 7 + `test_ai_mcp` 10 + `test_asset_audio_pipeline` 6 + `test_qa_balance_engine` 9 + `test_automation` 6 + `test_engine_orchestrator` 10 + `test_tool_and_3d_assets` 10 + `test_build_system` 7 + `test_gameplay_and_agents` 5 + `test_evolution_phase11` 4).
+- `.\infrastructure\scripts\playforge.ps1 test-win`: `229 assertions | Failed: 0`, `Action Balance Verifier` `PASSED` (0 soft-locks), `Engine Boot Gate` `14 assertions | Failed: 0`.
+- Restrições preservadas: política `FREE_TIER_POLICY.md` (`paid_services_enabled: false`), portas do operador intactas, sem inicialização indevida de `data/` na raiz e zero alterações no jogo-âncora.
 
-## 4. Próxima Ação Exata
+## 4. Próximas Ações Opcionais (Dependem de Decisão/Hardware Externo)
 
-**Fase 2 — Core da Fábrica & Multi-Projeto** (diretório `factory/` em Python, Project Manager, isolamento de projetos, logs estruturados). **Não iniciar sem aprovação do operador.**
+1. Commit/tag no Git pelo operador após revisar o *working tree*.
+2. Caso o operador instale `Unity Editor`, `Unreal Engine 5` (workstation `>= 32 GB RAM` + GPU dedicado DX12), `Android SDK` ou modelos `Ollama` (`ollama pull ...`), executar `engine-probe`, `build-toolchains` e `ai-health` para ativar execução local adicional.
+3. `Sprint 4C` do jogo-âncora (`src/adapters/` & export `.aab` comercial) mediante decisão humana.

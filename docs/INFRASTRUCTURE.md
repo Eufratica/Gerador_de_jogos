@@ -17,6 +17,8 @@
 | `8000`, `5678`, `1880`, `6333/6334`, `5433`, `6380` | Containers/serviços **pré-existentes do usuário** | **Não tocar** |
 | `127.0.0.1:5434` | `playforge_db` (`pgvector/pgvector:pg16`, `pgvector 0.8.7`) | PlayForge |
 | `127.0.0.1:6381` | `playforge_valkey` (`valkey/valkey:8.0-alpine`, profile `cache`) | PlayForge (`6380` estava ocupada; ver erro de bind registrado em `008`) |
+| `127.0.0.1:5679` | `playforge_n8n` (`docker.n8n.io/n8nio/n8n:1.95.3`, profile `automation`) | PlayForge (`5678` ocupada no host; mapeamento `5679->5678`, opcional via `up-automation`) |
+| `127.0.0.1:8787` | Ponte HTTP Webhook PlayForge (`automation-serve`) | Loopback local para `WF-001`..`WF-020` |
 
 ## 2. Artefatos Entregues
 
@@ -36,6 +38,7 @@
 .\infrastructure\scripts\playforge.ps1 build-runner  # imagem factory-runner
 .\infrastructure\scripts\playforge.ps1 up            # PostgreSQL + pgvector
 .\infrastructure\scripts\playforge.ps1 up-cache      # + Valkey
+.\infrastructure\scripts\playforge.ps1 up-automation # + n8n Community (127.0.0.1:5679, opcional)
 .\infrastructure\scripts\playforge.ps1 health        # pg_isready + extensão vector
 .\infrastructure\scripts\playforge.ps1 test-linux    # suíte Godot no container Linux
 .\infrastructure\scripts\playforge.ps1 status | down | restart | logs

@@ -1,6 +1,6 @@
 # AUTOMATION.md — LangGraph vs. n8n Community Edition & Workflows
 
-> **Estado Atual (Fase 0):** Nenhum serviço `LangGraph` ou `n8n` está implantado ainda. Serão introduzidos progressivamente nas Fases 6 e 9.
+> **Estado Atual (Fase 9 — `OpenSpec 016`):** Camada de automação local (`factory/playforge/automation/`), catálogo exportável livre de credenciais `automation/exports/WF-001..WF-020`, servidor webhook loopback (`127.0.0.1:8787`), subcomandos CLI `automation-*` e serviço opcional `n8n` Community em `docker-compose.yml` (`profiles: ["automation"]`, `127.0.0.1:${PLAYFORGE_N8N_PORT:-5679}:5678`) implementados e verificados via testes automatizados (`test_automation.py`). Inicialização de container `n8n` permanece opcional via `playforge.ps1 up-automation`.
 
 ---
 
@@ -39,4 +39,4 @@ Não duplicar lógicas equivalentes nem criar workflows gigantes:
 | `WF-019` | Error Recovery | Retry limitado, checkpoint e rollback | Anti-corrupção |
 | `WF-020` | Factory Monitoring | Saúde dos serviços, execuções e logs | Observabilidade contínua |
 
-Todo export em `automation/exports/` (a ser criado na Fase 9) deverá ser importável, versionado e **100% livre de credenciais reais**.
+Todo export em `automation/exports/` é importável no `n8n Community`, determinístico, validado *fail-closed* por `automation-validate --strict` e **100% livre de credenciais reais**.

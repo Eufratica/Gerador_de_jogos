@@ -1,7 +1,7 @@
 # Capability Specification: `game-factory`
 
 - **Capability ID:** `game-factory`
-- **Status:** `DRAFT_PHASE_0` *(Governança definida; implementação da plataforma planejada a partir da Fase 2)*
+- **Status:** `IMPLEMENTED_PHASE_5` *(Factory Core, Project Manager e Game Generator MVP operacionais em `factory/playforge/` com suíte Python + validação real Godot 4.4 headless sobre projetos gerados)*
 - **Referência Técnica:** [docs/GAME_FACTORY.md](../../docs/GAME_FACTORY.md)
 
 ## Requisitos Funcionais e Estruturais
