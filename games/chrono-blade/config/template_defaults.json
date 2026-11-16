@@ -1,0 +1,40 @@
+{
+  "game_id": "chrono-blade",
+  "game_name": "Chrono Blade",
+  "genre": "action-rpg",
+  "hero": {
+    "base_attack": 10.0,
+    "base_hp": 100.0,
+    "move_speed": 150.0,
+    "name": "Protagonista"
+  },
+  "schema_version": 1,
+  "spec_id": "spec-chrono-blade-v1",
+  "spec_version": "0.1.0",
+  "worlds": [
+    {
+      "name": "Floresta Sombria",
+      "rooms": [
+        {
+          "enemy_attack": 1.59,
+          "enemy_hp": 12.75,
+          "enemy_name": "Sentinela Menor",
+          "name": "Entrada",
+          "next_room_id": "room_2",
+          "reward_gold": 25.0,
+          "room_id": "room_1"
+        },
+        {
+          "enemy_attack": 7.33,
+          "enemy_hp": 109.99,
+          "enemy_name": "Guardi\u00e3o do Abismo",
+          "name": "C\u00e2mara do Chefe",
+          "next_room_id": "room_1",
+          "reward_gold": 57.5,
+          "room_id": "room_2"
+        }
+      ],
+      "world_id": "world_1"
+    }
+  ]
+}

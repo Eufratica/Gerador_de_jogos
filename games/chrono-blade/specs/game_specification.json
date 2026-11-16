@@ -1,0 +1,187 @@
+{
+  "acceptance_criteria": [
+    "Execu\u00e7\u00e3o de testes determin\u00edsticos em modo headless em tempo inferior a 1s",
+    "Nenhum travamento ou soft-lock durante transi\u00e7\u00f5es entre salas do mundo 1",
+    "Soma das taxas de sorteio transparente igual a 100%"
+  ],
+  "accessibility": {
+    "colorblind_mode": true,
+    "configurable_controls": true,
+    "subtitles": true
+  },
+  "art_and_assets": {
+    "palette": [
+      "#0f0f14",
+      "#ffffff",
+      "#e63946",
+      "#457b9d"
+    ],
+    "style": "high_contrast_2d_silhouette"
+  },
+  "audio": {
+    "music_style": "atmospheric_synth",
+    "procedural_sfx": true
+  },
+  "characters": [
+    {
+      "id": "char_hero",
+      "name": "Protagonista",
+      "role": "player",
+      "stats": {
+        "base_attack": 10,
+        "base_health": 100,
+        "speed": 150
+      }
+    }
+  ],
+  "controls": {
+    "actions": [
+      "move_left",
+      "move_right",
+      "jump",
+      "primary_action",
+      "skill_action"
+    ],
+    "primary_input": "keyboard_and_touch"
+  },
+  "core_gameplay": {
+    "camera": "2D side-view or top-down",
+    "perspective": "2D",
+    "physics_mode": "custom-deterministic"
+  },
+  "core_loop": "Entrar em fase -> Executar mec\u00e2nicas -> Coletar recursos -> Aprimorar atributos -> Desafiar chefe",
+  "difficulty": {
+    "base_scaling": 1.15,
+    "boss_multiplier": 2.5
+  },
+  "economy": {
+    "currencies": [
+      "gold",
+      "gems"
+    ],
+    "gacha_rates": {
+      "common": 0.7,
+      "legendary": 0.05,
+      "rare": 0.25
+    }
+  },
+  "enemies": [
+    {
+      "base_damage": 5,
+      "base_health": 40,
+      "id": "enemy_minion",
+      "name": "Sentinela Menor",
+      "type": "minion"
+    },
+    {
+      "base_damage": 20,
+      "base_health": 300,
+      "id": "enemy_boss",
+      "name": "Guardi\u00e3o do Abismo",
+      "type": "boss"
+    }
+  ],
+  "engine": "godot",
+  "engine_version": "4.4-stable",
+  "game_id": "chrono-blade",
+  "genre": "action-rpg",
+  "mechanics": [
+    {
+      "description": "Limpar inimigos da sala para destravar portal seguinte",
+      "id": "mech_core_loop",
+      "name": "Progress\u00e3o de Fases"
+    },
+    {
+      "description": "Ataques com tempo de recarga e janelas de esquiva",
+      "id": "mech_combat",
+      "name": "Combate T\u00e1tico"
+    }
+  ],
+  "monetization": {
+    "enabled": false,
+    "model": "f2p_pure"
+  },
+  "name": "Chrono Blade",
+  "narrative": {
+    "dialogue_style": "minimalist_in_game_banners",
+    "lore_summary": "O her\u00f3i desafia os guardi\u00f5es ancestrais para restaurar o equil\u00edbrio do reino."
+  },
+  "persistence": {
+    "save_format": "json_atomic",
+    "slots": 3
+  },
+  "product_goals": [
+    "Construir experi\u00eancia s\u00f3lida e balanceada do g\u00eanero action-rpg",
+    "Garantir taxa de quadros est\u00e1vel em plataformas alvo",
+    "Operar 100% offline com persist\u00eancia local confi\u00e1vel"
+  ],
+  "progression": {
+    "curve_type": "exponential_soft_cap",
+    "max_level": 50
+  },
+  "references": [
+    "Zaikor: Zenkai Infinite (arquitetura determin\u00edstica e balanceamento fail-closed)"
+  ],
+  "security": {
+    "anti_tamper": true,
+    "offline_only": true
+  },
+  "spec_id": "spec-chrono-blade-v1",
+  "spec_schema_version": 1,
+  "subgenre": "core-loop",
+  "target_audience": {
+    "demographic": "Jogadores de 16-35 anos apreciadores de mec\u00e2nicas determin\u00edsticas",
+    "playstyle": "Sess\u00f5es curtas a m\u00e9dias (5-20 min) com progress\u00e3o constante"
+  },
+  "target_platforms": [
+    "windows",
+    "linux",
+    "android"
+  ],
+  "technical_requirements": {
+    "headless_compatible": true,
+    "max_ram_mb": 256,
+    "target_fps": 60
+  },
+  "ui_ux": {
+    "elements": [
+      "health_bar",
+      "currency_counter",
+      "skill_buttons",
+      "pause_menu"
+    ],
+    "resolution": "1920x1080",
+    "screen_orientation": "landscape"
+  },
+  "value_proposition": "Gameplay envolvente de action-rpg com progress\u00e3o justa e zero atrito t\u00e9cnico.",
+  "version": "0.1.0",
+  "worlds_and_levels": {
+    "total_rooms": 2,
+    "worlds": [
+      {
+        "name": "Floresta Sombria",
+        "rooms": [
+          {
+            "connections": [
+              {
+                "target_room_id": "room_2"
+              }
+            ],
+            "name": "Entrada",
+            "room_id": "room_1"
+          },
+          {
+            "connections": [
+              {
+                "target_room_id": "room_1"
+              }
+            ],
+            "name": "C\u00e2mara do Chefe",
+            "room_id": "room_2"
+          }
+        ],
+        "world_id": "world_1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "balance_profile": {
+    "effective_worst_case_damage": 74.89,
+    "hero_max_hp": 100.0,
+    "normalized": true,
+    "raw_worst_case_damage": 797.0,
+    "scale_factor": 0.3188,
+    "total_rooms": 2,
+    "total_worlds": 1
+  },
+  "files_sha256": {
+    "config/template_defaults.json": "4ed27ee52f03b972fa8b740eb436a2fc13f08a8db32bd54d3495628c639981d9",
+    "project.godot": "635e64462e2e9db5af88ad51a98dca0d17441a5002403884309d961c771a6acf",
+    "src/core/big_num.gd": "f4a9c33987295edf94b976d6873dc327d00f24d31bf9d9625f155400922b77c0",
+    "src/core/game_loop_core.gd": "cef2c99b04c1a97a7d8d1f1515c0bbddab0f60e62b651b25a807572ae4cdeeaf",
+    "src/core/seeded_rng.gd": "e3509254b0bfffc1fa08f787444b1cddff675118e627c654c62eceb6ccfd22d6",
+    "src/engine/local_checkpoint_store.gd": "e7cf33a4922a6467bd307f79cfd0311a831672da6677d03fa10ce96bec11a0d2",
+    "src/engine/main.gd": "5407e3f89e1c975e8135670599cdf46bf6ec75ac031c0fe239d7376d57095938",
+    "src/engine/main.tscn": "eeb2e0e9150e1e3ae82ac3c2d2af09ffd1774836ca74beff5383d4e2561cde26",
+    "tests/unit/test_harness.gd": "6d4b9fb093928b0196106fbf3a824237a539ef6437b2cac3220dbc9fd3b96baf",
+    "tests/unit/verify_generated_game.gd": "0c096e1316480d308d9ecb5bffab55e5f789459d27b9490d0ab38326b09b0048"
+  },
+  "game_name": "Chrono Blade",
+  "generated_at": "2026-11-16T07:54:26+00:00",
+  "generation_schema_version": 1,
+  "project_id": "chrono-blade",
+  "project_version": "0.1.0",
+  "skeleton_sha256": "aa8fa999ce7ca231883866685bb41a5740a246709cf53b58b284730a0bc7deb8",
+  "spec_id": "spec-chrono-blade-v1",
+  "spec_sha256": "22d4c61a875c1d753636adf24e386a21800c21da2d1b349daea494750bcf4ed4",
+  "spec_version": "0.1.0",
+  "template_id": "godot-2d-action-rpg",
+  "template_version": "1.0.0"
+}

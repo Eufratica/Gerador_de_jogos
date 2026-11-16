@@ -1,0 +1,12 @@
+{
+  "artifact_path": "builds/chrono-blade-0.1.0-preview.zip",
+  "artifact_sha256": "745f2c9a25ecc3cac5849ed6285978f0487d184bd1d7b043e95ea95dfdff37e8",
+  "artifact_size_bytes": 13368,
+  "bundled_file_count": 12,
+  "checksum_path": "builds/chrono-blade-0.1.0-preview.sha256",
+  "godot_verified": true,
+  "packaged_at": "2026-11-16T07:54:27+00:00",
+  "preview_report_schema_version": 1,
+  "project_id": "chrono-blade",
+  "project_version": "0.1.0"
+}

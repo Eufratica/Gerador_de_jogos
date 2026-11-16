@@ -1,0 +1,13 @@
+{
+  "animations_missing_rig": [],
+  "asset_count": 7,
+  "audit_schema_version": 1,
+  "audited_at": "2026-11-16T07:54:46Z",
+  "duplicate_hashes": [],
+  "godot_result": null,
+  "godot_verified": false,
+  "models_missing_materials": [],
+  "orphans_detected": 0,
+  "passed": true,
+  "project_id": "chrono-blade"
+}

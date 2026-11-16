@@ -1,0 +1,34 @@
+{
+  "enabled_systems": [
+    "locomotion",
+    "combat_action",
+    "enemy_ai",
+    "save_system_versioned"
+  ],
+  "engine": "godot",
+  "gameplay_systems_schema_version": 1,
+  "injected_at": "2026-11-16T07:54:33+00:00",
+  "modules": [
+    {
+      "engine": "godot",
+      "file_path": "src/core/systems/locomotion.gd",
+      "system_id": "locomotion"
+    },
+    {
+      "engine": "godot",
+      "file_path": "src/core/systems/combat_action.gd",
+      "system_id": "combat_action"
+    },
+    {
+      "engine": "godot",
+      "file_path": "src/core/systems/enemy_ai.gd",
+      "system_id": "enemy_ai"
+    },
+    {
+      "engine": "godot",
+      "file_path": "src/core/systems/save_system_versioned.gd",
+      "system_id": "save_system_versioned"
+    }
+  ],
+  "project_id": "chrono-blade"
+}

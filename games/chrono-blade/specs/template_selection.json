@@ -1,0 +1,14 @@
+{
+  "engine": "godot",
+  "engine_version": "4.4-stable",
+  "godot_tests_verified": true,
+  "license": "MIT",
+  "project_id": "chrono-blade",
+  "selected_at": "2026-11-16T07:54:24Z",
+  "selection_schema_version": 1,
+  "skeleton_sha256": "aa8fa999ce7ca231883866685bb41a5740a246709cf53b58b284730a0bc7deb8",
+  "spec_id": "spec-chrono-blade-v1",
+  "spec_sha256": "22d4c61a875c1d753636adf24e386a21800c21da2d1b349daea494750bcf4ed4",
+  "template_id": "godot-2d-action-rpg",
+  "template_version": "1.0.0"
+}

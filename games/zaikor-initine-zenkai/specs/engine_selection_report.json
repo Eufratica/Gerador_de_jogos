@@ -1,0 +1,457 @@
+{
+  "executable_locally_now": "godot",
+  "hardware_feasible_locally": true,
+  "host_environment": {
+    "cpu_threads": 8,
+    "has_dedicated_gpu": false,
+    "total_ram_gb": 11.74
+  },
+  "justification_summary": "Engine selecionada por merito tecnico nos 14 criterios: 'Godot Engine 4.4' (89.23/100). Executavel imediatamente no host local: 'godot'.",
+  "rankings": [
+    {
+      "criteria_breakdown": [
+        {
+          "criterion_id": "genre",
+          "label": "Genero do jogo",
+          "rationale": "Godot atende diretamente RPGs, plataforma, estrategia e jogos 2D/3D indie (action-rpg).",
+          "score": 9.5,
+          "weight": 1.1
+        },
+        {
+          "criterion_id": "world_dimension",
+          "label": "Dimensao do mundo (2D/2.5D/3D)",
+          "rationale": "Dimensao '3d-indie' pontuada pelo pipeline 2D dedicado e Forward+/Mobile 3D.",
+          "score": 7.8,
+          "weight": 1.4
+        },
+        {
+          "criterion_id": "camera_type",
+          "label": "Tipo de camera",
+          "rationale": "Camera 'third-person-cinematic' suportada via Camera2D/Camera3D e scripts GDScript.",
+          "score": 6.5,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "character_count",
+          "label": "Quantidade de personagens simultaneos",
+          "rationale": "Suporta 6 personagem(ns) com baixo overhead de cena.",
+          "score": 9.5,
+          "weight": 0.7
+        },
+        {
+          "criterion_id": "animation_complexity",
+          "label": "Complexidade das animacoes",
+          "rationale": "AnimationPlayer/AnimationTree adequado para 'standard-3d'.",
+          "score": 8.0,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "physics_needs",
+          "label": "Necessidade de fisica",
+          "rationale": "Fisica deterministica 2D/3D enxuta para 'rigidbody-3d'.",
+          "score": 8.0,
+          "weight": 0.9
+        },
+        {
+          "criterion_id": "graphic_quality",
+          "label": "Qualidade grafica desejada",
+          "rationale": "Adequado para 'stylized-3d' sem overhead AAA.",
+          "score": 8.8,
+          "weight": 1.3
+        },
+        {
+          "criterion_id": "target_platforms",
+          "label": "Plataformas de destino",
+          "rationale": "Exportacao nativa Windows/Linux/Android/Web para ['windows'].",
+          "score": 9.5,
+          "weight": 1.1
+        },
+        {
+          "criterion_id": "expected_performance",
+          "label": "Desempenho esperado",
+          "rationale": "Runtime leve (~100 MB) ideal para 'desktop-60fps'.",
+          "score": 9.0,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "development_complexity",
+          "label": "Complexidade de desenvolvimento",
+          "rationale": "Iteracao rapida para complexidade 'high'.",
+          "score": 7.8,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "free_tools_availability",
+          "label": "Disponibilidade de ferramentas gratuitas",
+          "rationale": "100% compativel com Blender, GIMP, Krita, FFmpeg sem plugins pagos.",
+          "score": 10.0,
+          "weight": 1.2
+        },
+        {
+          "criterion_id": "hardware_requirements",
+          "label": "Requisitos de hardware do host/alvo",
+          "rationale": "Roda bem no host atual (11.74 GB RAM, CLI local disponivel).",
+          "score": 10.0,
+          "weight": 1.4
+        },
+        {
+          "criterion_id": "licensing",
+          "label": "Licenciamento e politica Free First",
+          "rationale": "Licenca MIT pura (zero royalties, alinhamento maximo Free First).",
+          "score": 10.0,
+          "weight": 1.2
+        },
+        {
+          "criterion_id": "automation_possibility",
+          "label": "Possibilidade de automacao headless/CLI",
+          "rationale": "CLI '--headless' nativo com execucao e QA em < 1s.",
+          "score": 10.0,
+          "weight": 1.1
+        }
+      ],
+      "display_name": "Godot Engine 4.4",
+      "engine_id": "godot",
+      "executable_locally_now": true,
+      "hardware_compatible": true,
+      "license_summary": "MIT (100% open source, custo zero, sem royalties)",
+      "overall_score_100": 89.23,
+      "probe": {
+        "available": true,
+        "display_name": "Godot Engine 4.4",
+        "engine_id": "godot",
+        "executable_path": "C:\\Jogo_Android\\tools\\godot\\Godot_v4.4-stable_win64_console.exe",
+        "headless_supported": true,
+        "license_type": "MIT",
+        "notes": "Binario CLI headless disponivel localmente para testes em < 1s.",
+        "recommended_min_ram_gb": 4.0,
+        "requires_dedicated_gpu": false,
+        "version": "4.4-stable"
+      },
+      "supported_technologies": [
+        "GDScript",
+        "Scenes & Nodes",
+        "Signals",
+        "Physics Engine (2D/3D)",
+        "AnimationTree",
+        "Shaders",
+        "C# (opcional com .NET SDK)"
+      ],
+      "toolchain_installed": true,
+      "warnings": []
+    },
+    {
+      "criteria_breakdown": [
+        {
+          "criterion_id": "genre",
+          "label": "Genero do jogo",
+          "rationale": "Ecossistema amplo de pacotes/prefabs Unity adequado para 'action-rpg'.",
+          "score": 8.8,
+          "weight": 1.1
+        },
+        {
+          "criterion_id": "world_dimension",
+          "label": "Dimensao do mundo (2D/2.5D/3D)",
+          "rationale": "URP/HDRP e 2D Tilemap maduros para '3d-indie'.",
+          "score": 9.4,
+          "weight": 1.4
+        },
+        {
+          "criterion_id": "camera_type",
+          "label": "Tipo de camera",
+          "rationale": "Cinemachine e componentes modulares atendem multiplos estilos de camera.",
+          "score": 8.5,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "character_count",
+          "label": "Quantidade de personagens simultaneos",
+          "rationale": "Prefabs e LODs escalam bem para 6 personagens.",
+          "score": 9.0,
+          "weight": 0.7
+        },
+        {
+          "criterion_id": "animation_complexity",
+          "label": "Complexidade das animacoes",
+          "rationale": "Animator Controller + Avatar retargeting atendem 'standard-3d'.",
+          "score": 9.2,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "physics_needs",
+          "label": "Necessidade de fisica",
+          "rationale": "PhysX/Box2D nativo com bom equilibrio para 'rigidbody-3d'.",
+          "score": 9.3,
+          "weight": 0.9
+        },
+        {
+          "criterion_id": "graphic_quality",
+          "label": "Qualidade grafica desejada",
+          "rationale": "URP/Shader Graph forte em 'stylized-3d'.",
+          "score": 9.5,
+          "weight": 1.3
+        },
+        {
+          "criterion_id": "target_platforms",
+          "label": "Plataformas de destino",
+          "rationale": "Cobertura multiplataforma completa (incluindo consoles) para ['windows'].",
+          "score": 9.8,
+          "weight": 1.1
+        },
+        {
+          "criterion_id": "expected_performance",
+          "label": "Desempenho esperado",
+          "rationale": "IL2CPP e Burst/Jobs entregam bom throughput multiplataforma.",
+          "score": 8.8,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "development_complexity",
+          "label": "Complexidade de desenvolvimento",
+          "rationale": "Modularidade C# forte (preferencial quando C# e requisito).",
+          "score": 9.0,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "free_tools_availability",
+          "label": "Disponibilidade de ferramentas gratuitas",
+          "rationale": "Alguns recursos avancados dependem de Asset Store paga ou Unity Pro.",
+          "score": 7.5,
+          "weight": 1.2
+        },
+        {
+          "criterion_id": "hardware_requirements",
+          "label": "Requisitos de hardware do host/alvo",
+          "rationale": "Host (11.74 GB RAM): Unity Editor ausente no host; requer ~10-25 GB em disco.",
+          "score": 6.7,
+          "weight": 1.4
+        },
+        {
+          "criterion_id": "licensing",
+          "label": "Licenciamento e politica Free First",
+          "rationale": "Unity Personal e gratuita sob limite de receita, porem proprietaria e requer conta Unity.",
+          "score": 4.5,
+          "weight": 1.2
+        },
+        {
+          "criterion_id": "automation_possibility",
+          "label": "Possibilidade de automacao headless/CLI",
+          "rationale": "Batchmode mais lento que CLI headless do Godot e exige ativacao de licenca.",
+          "score": 7.2,
+          "weight": 1.1
+        }
+      ],
+      "display_name": "Unity Engine",
+      "engine_id": "unity",
+      "executable_locally_now": false,
+      "hardware_compatible": true,
+      "license_summary": "Proprietaria (Unity Personal gratuita ate limite vigente; exige Unity Hub + conta)",
+      "overall_score_100": 83.01,
+      "probe": {
+        "available": false,
+        "display_name": "Unity Engine",
+        "engine_id": "unity",
+        "executable_path": null,
+        "headless_supported": true,
+        "license_type": "Proprietary-Personal-Free-Tier",
+        "notes": "Unity Editor/Hub nao instalado no host; scaffold estrutural habilitado e build/teste bloqueados.",
+        "recommended_min_ram_gb": 8.0,
+        "requires_dedicated_gpu": false,
+        "version": null
+      },
+      "supported_technologies": [
+        "C#",
+        "GameObjects & Components",
+        "Prefabs",
+        "Animator",
+        "Unity Physics",
+        "URP",
+        "HDRP"
+      ],
+      "toolchain_installed": false,
+      "warnings": [
+        "Toolchain 'unity' nao instalada no host atual."
+      ]
+    },
+    {
+      "criteria_breakdown": [
+        {
+          "criterion_id": "genre",
+          "label": "Genero do jogo",
+          "rationale": "Unreal destaca-se em acao 3D terceira pessoa, combate cinematografico e mundos extensos (action-rpg).",
+          "score": 9.5,
+          "weight": 1.1
+        },
+        {
+          "criterion_id": "world_dimension",
+          "label": "Dimensao do mundo (2D/2.5D/3D)",
+          "rationale": "Dimensao '3d-indie' (ideal para mundo 3D grande).",
+          "score": 8.4,
+          "weight": 1.4
+        },
+        {
+          "criterion_id": "camera_type",
+          "label": "Tipo de camera",
+          "rationale": "Gameplay Framework + SpringArm nativo para 'third-person-cinematic'.",
+          "score": 10.0,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "character_count",
+          "label": "Quantidade de personagens simultaneos",
+          "rationale": "Animation Blueprints e Niagara escalam bem para 6 personagem(ns).",
+          "score": 8.0,
+          "weight": 0.7
+        },
+        {
+          "criterion_id": "animation_complexity",
+          "label": "Complexidade das animacoes",
+          "rationale": "Control Rig, IK e Motion Matching nativos para 'standard-3d'.",
+          "score": 9.2,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "physics_needs",
+          "label": "Necessidade de fisica",
+          "rationale": "Chaos Physics / Cloth nativo para 'rigidbody-3d'.",
+          "score": 9.5,
+          "weight": 0.9
+        },
+        {
+          "criterion_id": "graphic_quality",
+          "label": "Qualidade grafica desejada",
+          "rationale": "Lumen e Nanite lideram em 'stylized-3d'.",
+          "score": 8.5,
+          "weight": 1.3
+        },
+        {
+          "criterion_id": "target_platforms",
+          "label": "Plataformas de destino",
+          "rationale": "Forte em PC/Consoles; pesado para Web/Mobile low-spec (['windows']).",
+          "score": 9.2,
+          "weight": 1.1
+        },
+        {
+          "criterion_id": "expected_performance",
+          "label": "Desempenho esperado",
+          "rationale": "Otimizado para hardware dedicado (desktop-60fps).",
+          "score": 8.0,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "development_complexity",
+          "label": "Complexidade de desenvolvimento",
+          "rationale": "Compilacao C++/shaders mais pesada em projetos simples ('high').",
+          "score": 9.2,
+          "weight": 1.0
+        },
+        {
+          "criterion_id": "free_tools_availability",
+          "label": "Disponibilidade de ferramentas gratuitas",
+          "rationale": "Ferramentas nativas integradas (Niagara/Sequencer/MetaSounds) gratis no editor.",
+          "score": 8.0,
+          "weight": 1.2
+        },
+        {
+          "criterion_id": "hardware_requirements",
+          "label": "Requisitos de hardware do host/alvo",
+          "rationale": "Host atual: 11.74 GB RAM, GPU dedicada=False, UE5 instalada=False (Epic recomenda 32 GB RAM + GPU DX12 >= 8 GB VRAM).",
+          "score": 1.5,
+          "weight": 1.4
+        },
+        {
+          "criterion_id": "licensing",
+          "label": "Licenciamento e politica Free First",
+          "rationale": "$0 inicial ate US$ 1M; 5% royalty > US$ 1M e EULA proprietario (nao open source).",
+          "score": 3.5,
+          "weight": 1.2
+        },
+        {
+          "criterion_id": "automation_possibility",
+          "label": "Possibilidade de automacao headless/CLI",
+          "rationale": "Automation Tests exigem compilacao C++ e UE5 instalada localmente.",
+          "score": 2.5,
+          "weight": 1.1
+        }
+      ],
+      "display_name": "Unreal Engine 5",
+      "engine_id": "unreal",
+      "executable_locally_now": false,
+      "hardware_compatible": false,
+      "license_summary": "EULA Epic ($0 ate US$ 1M; 5% royalty > US$ 1M em jogos; nao open source)",
+      "overall_score_100": 73.1,
+      "probe": {
+        "available": false,
+        "display_name": "Unreal Engine 5",
+        "engine_id": "unreal",
+        "executable_path": null,
+        "headless_supported": true,
+        "license_type": "Proprietary-Epic-EULA-5pct-Royalty-Above-1M",
+        "notes": "Unreal Engine 5 nao instalada no host (recomendado Epic: 32 GB RAM + GPU DX12 >= 8 GB VRAM).",
+        "recommended_min_ram_gb": 32.0,
+        "requires_dedicated_gpu": true,
+        "version": null
+      },
+      "supported_technologies": [
+        "C++",
+        "Blueprints",
+        "Gameplay Framework",
+        "Enhanced Input",
+        "Animation Blueprints",
+        "Niagara",
+        "Lumen",
+        "Nanite"
+      ],
+      "toolchain_installed": false,
+      "warnings": [
+        "Toolchain 'unreal' nao instalada no host atual.",
+        "Hardware local (11.74 GB RAM, GPU dedicada=False) abaixo do recomendado para 'unreal' (32 GB RAM, GPU dedicada=True)."
+      ]
+    }
+  ],
+  "recommended_engine": "godot",
+  "recommended_engine_score": 89.23,
+  "recommended_tools": [
+    {
+      "installed": true,
+      "path": "C:/Program Files/Blender Foundation\\Blender 5.3\\blender.exe",
+      "role": "Modelagem 3D, escultura, UV, retopologia, rigging e PBR (GPL gratuito)",
+      "tool": "blender"
+    },
+    {
+      "installed": true,
+      "path": "C:\\Users\\gerson.marques\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0.2-full_build\\bin\\ffmpeg.exe",
+      "role": "Processamento e conversao de audio WAV/OGG/MP3 (LGPL/GPL gratuito)",
+      "tool": "ffmpeg"
+    },
+    {
+      "installed": true,
+      "path": "builtin",
+      "role": "Audio nativo da engine (padrao zero-cost; FMOD/Wwise apenas opcionais)",
+      "tool": "native-audio-or-fmod-optional"
+    }
+  ],
+  "report_markdown": "# Relatorio de Selecao de Engine (`Engine Selection System`)\n\n- **Engine Recomendada (Merito Tecnico):** `godot` (89.23/100)\n- **Executavel Localmente Agora:** `godot`\n- **Host:** `11.74 GB RAM` | `8 threads` | GPU dedicada=`False`\n- **Justificativa:** Engine selecionada por merito tecnico nos 14 criterios: 'Godot Engine 4.4' (89.23/100). Executavel imediatamente no host local: 'godot'.\n\n## Ranking Multi-Engine\n\n| Engine | Score (/100) | Instalada no Host | Compativel com Hardware | Executavel Localmente |\n| :--- | ---: | :--- | :--- | :--- |\n| `godot` | 89.23 | True | True | True |\n| `unity` | 83.01 | False | True | False |\n| `unreal` | 73.10 | False | False | False |\n\n## Detalhamento dos 14 Criterios (Engine #1)\n\n- **Genero do jogo** (peso `1.1`): `9.5/10` \u2014 Godot atende diretamente RPGs, plataforma, estrategia e jogos 2D/3D indie (action-rpg).\n- **Dimensao do mundo (2D/2.5D/3D)** (peso `1.4`): `7.8/10` \u2014 Dimensao '3d-indie' pontuada pelo pipeline 2D dedicado e Forward+/Mobile 3D.\n- **Tipo de camera** (peso `1.0`): `6.5/10` \u2014 Camera 'third-person-cinematic' suportada via Camera2D/Camera3D e scripts GDScript.\n- **Quantidade de personagens simultaneos** (peso `0.7`): `9.5/10` \u2014 Suporta 6 personagem(ns) com baixo overhead de cena.\n- **Complexidade das animacoes** (peso `1.0`): `8.0/10` \u2014 AnimationPlayer/AnimationTree adequado para 'standard-3d'.\n- **Necessidade de fisica** (peso `0.9`): `8.0/10` \u2014 Fisica deterministica 2D/3D enxuta para 'rigidbody-3d'.\n- **Qualidade grafica desejada** (peso `1.3`): `8.8/10` \u2014 Adequado para 'stylized-3d' sem overhead AAA.\n- **Plataformas de destino** (peso `1.1`): `9.5/10` \u2014 Exportacao nativa Windows/Linux/Android/Web para ['windows'].\n- **Desempenho esperado** (peso `1.0`): `9.0/10` \u2014 Runtime leve (~100 MB) ideal para 'desktop-60fps'.\n- **Complexidade de desenvolvimento** (peso `1.0`): `7.8/10` \u2014 Iteracao rapida para complexidade 'high'.\n- **Disponibilidade de ferramentas gratuitas** (peso `1.2`): `10.0/10` \u2014 100% compativel com Blender, GIMP, Krita, FFmpeg sem plugins pagos.\n- **Requisitos de hardware do host/alvo** (peso `1.4`): `10.0/10` \u2014 Roda bem no host atual (11.74 GB RAM, CLI local disponivel).\n- **Licenciamento e politica Free First** (peso `1.2`): `10.0/10` \u2014 Licenca MIT pura (zero royalties, alinhamento maximo Free First).\n- **Possibilidade de automacao headless/CLI** (peso `1.1`): `10.0/10` \u2014 CLI '--headless' nativo com execucao e QA em < 1s.\n",
+  "request_profile": {
+    "animation_complexity": "standard-3d",
+    "automation_preference": "headless-cli-priority",
+    "camera_type": "third-person-cinematic",
+    "character_count": 6,
+    "development_complexity": "high",
+    "expected_performance": "desktop-60fps",
+    "free_tools_priority": true,
+    "genre": "action-rpg",
+    "graphic_quality": "stylized-3d",
+    "licensing_preference": "open-source-mit",
+    "physics_needs": "rigidbody-3d",
+    "prefer_open_source_license": true,
+    "require_csharp": false,
+    "target_platforms": [
+      "windows"
+    ],
+    "target_ram_budget_mb": 512,
+    "world_dimension": "3d-indie"
+  },
+  "requires_external_install": false,
+  "selection_policy": "WEIGHTED_14_CRITERIA_NO_BLIND_DEFAULT",
+  "selection_schema_version": 1
+}

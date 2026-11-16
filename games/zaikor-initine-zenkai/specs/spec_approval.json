@@ -1,0 +1,12 @@
+{
+  "approved": true,
+  "approved_at": "2026-11-16T11:32:07+00:00",
+  "approver": "operator",
+  "gdd_linked": true,
+  "notes": "Opcao A aprovada: Godot 4.7.2 Stable + Compatibility Renderer",
+  "project_id": "zaikor-initine-zenkai",
+  "spec_id": "spec-zaikor-initine-zenkai-v1",
+  "spec_schema_version": 2,
+  "spec_sha256": "12cf09d4018b782a9e32a0f28609e6c12028985baf552ad76c6efbb28b9e5ae8",
+  "spec_version": "0.1.0"
+}

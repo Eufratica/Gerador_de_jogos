@@ -1,0 +1,106 @@
+{
+  "failed_pillars": [],
+  "passed": true,
+  "pillars": {
+    "assets": {
+      "animations_missing_rig": [],
+      "asset_count": 7,
+      "audit_schema_version": 1,
+      "audited_at": "2026-11-16T07:54:43Z",
+      "duplicate_hashes": [],
+      "godot_result": {
+        "output": "AssetsVerified:7 | Failed: 0",
+        "passed": true,
+        "returncode": 0,
+        "verified_count": 7
+      },
+      "godot_verified": true,
+      "models_missing_materials": [],
+      "orphans_detected": 0,
+      "passed": true,
+      "project_id": "chrono-blade"
+    },
+    "balance": {
+      "balance_schema_version": 1,
+      "findings": [],
+      "genre": "action-rpg",
+      "godot_verifier": null,
+      "passed": true,
+      "profiles": [
+        {
+          "clear_rate": 1.0,
+          "final_gold": 35.5,
+          "ok": true,
+          "profile": "F2P_PURE",
+          "steps_elapsed": 11,
+          "worst_case_damage_ratio": 0.2052
+        },
+        {
+          "clear_rate": 1.0,
+          "final_gold": 3.17,
+          "ok": true,
+          "profile": "CASUAL_OPTIMAL",
+          "steps_elapsed": 10,
+          "worst_case_damage_ratio": 0.2052
+        },
+        {
+          "clear_rate": 1.0,
+          "final_gold": 7.3,
+          "ok": true,
+          "profile": "HARDCORE_STRESS",
+          "steps_elapsed": 10,
+          "worst_case_damage_ratio": 0.1823
+        }
+      ],
+      "project_id": "chrono-blade",
+      "rooms_evaluated": 2,
+      "seed": 2026,
+      "simulator_family": "combat_progression",
+      "verified_at": "2026-11-16T07:54:41Z"
+    },
+    "godot_profile": {
+      "godot_bin": "C:\\Jogo_Android\\tools\\godot\\Godot_v4.4-stable_win64_console.exe",
+      "metrics": {
+        "active_node_count": 3,
+        "boot_ms": 125.8,
+        "fps": 1.0,
+        "frame_ms_avg": 5.54,
+        "frames_stepped": 10,
+        "main_scene": "res://src/engine/main.tscn",
+        "orphan_nodes_after_free": 0,
+        "orphan_nodes_delta": 0,
+        "static_memory_bytes": 19170870
+      },
+      "passed": true,
+      "project_id": "chrono-blade",
+      "raw_output": "",
+      "returncode": 0,
+      "script_errors_detected": false
+    },
+    "godot_suites": {
+      "passed": true,
+      "suites": [
+        {
+          "output": "=== PLAYFORGE GENERATED GAME VERIFICATION (chrono-blade) ===\nAssertions: 18 | Failed: 0 | Elapsed: 29.64 ms",
+          "passed": true,
+          "returncode": 0,
+          "script": "res://tests/unit/verify_generated_game.gd"
+        }
+      ]
+    },
+    "static": {
+      "core_files_checked": 7,
+      "files_scanned": 34,
+      "generation_integrity_ok": true,
+      "passed": true,
+      "project_id": "chrono-blade",
+      "res_refs_checked": 4,
+      "spec_valid": true,
+      "violations": [],
+      "workspace_root": "C:\\Jogo_Android\\games\\chrono-blade"
+    }
+  },
+  "project_id": "chrono-blade",
+  "qa_schema_version": 1,
+  "verified_at": "2026-11-16T07:54:43Z"
+}

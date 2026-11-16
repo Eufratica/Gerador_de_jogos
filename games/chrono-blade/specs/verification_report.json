@@ -1,0 +1,15 @@
+{
+  "file_integrity_ok": true,
+  "passed": true,
+  "project_id": "chrono-blade",
+  "suites": [
+    {
+      "output": "=== PLAYFORGE GENERATED GAME VERIFICATION (chrono-blade) ===\nAssertions: 18 | Failed: 0 | Elapsed: 35.92 ms",
+      "passed": true,
+      "returncode": 0,
+      "script": "res://tests/unit/verify_generated_game.gd"
+    }
+  ],
+  "verification_schema_version": 1,
+  "verified_at": "2026-11-16T07:54:37+00:00"
+}

@@ -1,0 +1,80 @@
+{
+  "approvals": {
+    "APROVACAO_HUMANA_ARQUITETURA": {
+      "approved": true,
+      "approved_at": "2026-11-16T11:32:09+00:00",
+      "approver": "operator",
+      "notes": "Aprovada Fase 0 e Etapa 1 em Godot 4.7.2 Stable"
+    }
+  },
+  "created_at": "2026-11-16T09:15:31+00:00",
+  "engine": "godot",
+  "engine_version": "4.7.2-stable",
+  "genre": "action-rpg",
+  "history": [
+    {
+      "actor": "director-tecnico",
+      "evidence": "docs/performance/ENVIRONMENT_AUDIT.md",
+      "from": "IDEIA",
+      "notes": "",
+      "to": "RESEARCH",
+      "ts": "2026-11-16T09:15:48+00:00"
+    },
+    {
+      "actor": "game-design",
+      "evidence": "gdd/gdd.json e gdd/gdd.md validados (25 secoes)",
+      "from": "RESEARCH",
+      "notes": "",
+      "to": "GDD",
+      "ts": "2026-11-16T09:15:51+00:00"
+    },
+    {
+      "actor": "architecture",
+      "evidence": "specs/game_specification.json validada (v2)",
+      "from": "GDD",
+      "notes": "",
+      "to": "GAME_SPECIFICATION",
+      "ts": "2026-11-16T09:15:55+00:00"
+    },
+    {
+      "actor": "architecture",
+      "evidence": "specs/engine_selection_report.json (Godot 4.x Compatibility)",
+      "from": "GAME_SPECIFICATION",
+      "notes": "",
+      "to": "ARQUITETURA",
+      "ts": "2026-11-16T09:15:58+00:00"
+    },
+    {
+      "actor": "director-tecnico",
+      "evidence": "Aguardando aprovacao humana da Fase 0 e decisao Godot 4.7.2 Stable vs 4.4.stable",
+      "from": "ARQUITETURA",
+      "notes": "",
+      "to": "APROVACAO_HUMANA_ARQUITETURA",
+      "ts": "2026-11-16T09:16:01+00:00"
+    },
+    {
+      "actor": "operator",
+      "evidence": "ADR-ZIZ-002 (Godot 4.7.2 Stable) + Compatibility base",
+      "from": "APROVACAO_HUMANA_ARQUITETURA",
+      "notes": "",
+      "to": "SELECAO_DE_TEMPLATE",
+      "ts": "2026-11-16T11:32:10+00:00"
+    },
+    {
+      "actor": "gameplay",
+      "evidence": "project.godot + scripts/core + scenes/main + tests validados em 4.7.2",
+      "from": "SELECAO_DE_TEMPLATE",
+      "notes": "",
+      "to": "GERACAO_DO_PROJETO",
+      "ts": "2026-11-16T11:32:11+00:00"
+    }
+  ],
+  "kind": "game",
+  "name": "Zaikor: Initine Zenkai",
+  "project_id": "zaikor-initine-zenkai",
+  "protected": false,
+  "stage": "GERACAO_DO_PROJETO",
+  "updated_at": "2026-11-16T11:32:11+00:00",
+  "version": "0.1.0",
+  "workspace": "games/zaikor-initine-zenkai"
+}

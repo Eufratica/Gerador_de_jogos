@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_main"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_top_color = Color(0.05, 0.07, 0.11, 1)
+sky_horizon_color = Color(0.14, 0.17, 0.23, 1)
+ground_bottom_color = Color(0.04, 0.05, 0.07, 1)
+ground_horizon_color = Color(0.1, 0.12, 0.16, 1)
+
+[sub_resource type="Sky" id="Sky_aetheryn"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
+
+[sub_resource type="Environment" id="Environment_base"]
+background_mode = 2
+sky = SubResource("Sky_aetheryn")
+ambient_light_source = 2
+ambient_light_color = Color(0.28, 0.34, 0.42, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.16, 0.18, 0.21, 1)
+roughness = 0.92
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+material = SubResource("StandardMaterial3D_ground")
+size = Vector2(40, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_initine"]
+albedo_color = Color(0.18, 0.62, 0.72, 1)
+emission_enabled = true
+emission = Color(0.22, 0.78, 0.86, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_monolith"]
+material = SubResource("StandardMaterial3D_initine")
+size = Vector3(0.9, 2.2, 0.9)
+
+[node name="MainRoot" type="Node3D"]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_base")
+
+[node name="SunLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 8, 0)
+light_color = Color(0.82, 0.88, 0.96, 1)
+light_energy = 1.15
+shadow_enabled = true
+
+[node name="GroundBody" type="StaticBody3D" parent="."]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="GroundBody"]
+mesh = SubResource("PlaneMesh_ground")
+
+[node name="GroundCollision" type="CollisionShape3D" parent="GroundBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ground")
+
+[node name="InitineMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -4)
+mesh = SubResource("BoxMesh_monolith")
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 3.2, 5.5)
+fov = 65.0
+far = 160.0
+
+[node name="OverlayHUD" type="CanvasLayer" parent="."]
+
+[node name="StatsLabel" type="Label" parent="OverlayHUD"]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 880.0
+offset_bottom = 110.0
+text = "Inicializando..."

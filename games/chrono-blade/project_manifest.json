@@ -1,0 +1,136 @@
+{
+  "approvals": {
+    "APROVACAO_HUMANA_ARQUITETURA": {
+      "approved": true,
+      "approved_at": "2026-11-16T07:54:19+00:00",
+      "approver": "operator",
+      "notes": "Arquitetura Godot 4.4 2D aprovada"
+    }
+  },
+  "created_at": "2026-11-16T07:49:05+00:00",
+  "engine": "godot",
+  "engine_version": "4.4-stable",
+  "genre": "action-rpg",
+  "history": [
+    {
+      "actor": "operator",
+      "evidence": "qwen2.5-coder:3b concept probe ok",
+      "from": "IDEIA",
+      "notes": "",
+      "to": "RESEARCH",
+      "ts": "2026-11-16T07:49:26+00:00"
+    },
+    {
+      "actor": "game-design",
+      "evidence": "gdd generated: Chrono Blade",
+      "from": "RESEARCH",
+      "notes": "",
+      "to": "GDD",
+      "ts": "2026-11-16T07:49:28+00:00"
+    },
+    {
+      "actor": "game-design",
+      "evidence": "spec valid: spec-chrono-blade-v1",
+      "from": "GDD",
+      "notes": "",
+      "to": "GAME_SPECIFICATION",
+      "ts": "2026-11-16T07:49:31+00:00"
+    },
+    {
+      "actor": "architecture",
+      "evidence": "specs/engine_selection_report.json",
+      "from": "GAME_SPECIFICATION",
+      "notes": "",
+      "to": "ARQUITETURA",
+      "ts": "2026-11-16T07:54:16+00:00"
+    },
+    {
+      "actor": "operator",
+      "evidence": "spec_approval.json",
+      "from": "ARQUITETURA",
+      "notes": "",
+      "to": "APROVACAO_HUMANA_ARQUITETURA",
+      "ts": "2026-11-16T07:54:20+00:00"
+    },
+    {
+      "actor": "operator",
+      "evidence": "APROVACAO_HUMANA_ARQUITETURA approved",
+      "from": "APROVACAO_HUMANA_ARQUITETURA",
+      "notes": "",
+      "to": "SELECAO_DE_TEMPLATE",
+      "ts": "2026-11-16T07:54:21+00:00"
+    },
+    {
+      "actor": "gameplay",
+      "evidence": "files=10",
+      "from": "SELECAO_DE_TEMPLATE",
+      "notes": "",
+      "to": "GERACAO_DO_PROJETO",
+      "ts": "2026-11-16T07:54:28+00:00"
+    },
+    {
+      "actor": "asset-pipeline",
+      "evidence": "assets_passed=True",
+      "from": "GERACAO_DO_PROJETO",
+      "notes": "",
+      "to": "PRODUCAO_DE_ASSETS",
+      "ts": "2026-11-16T07:54:32+00:00"
+    },
+    {
+      "actor": "gameplay",
+      "evidence": "4 modular pure systems injected",
+      "from": "PRODUCAO_DE_ASSETS",
+      "notes": "",
+      "to": "IMPLEMENTACAO",
+      "ts": "2026-11-16T07:54:34+00:00"
+    },
+    {
+      "actor": "gameplay",
+      "evidence": "config/gameplay_systems.json",
+      "from": "IMPLEMENTACAO",
+      "notes": "",
+      "to": "INTEGRACAO",
+      "ts": "2026-11-16T07:54:35+00:00"
+    },
+    {
+      "actor": "qa",
+      "evidence": "godot verify passed=True",
+      "from": "INTEGRACAO",
+      "notes": "",
+      "to": "TESTES",
+      "ts": "2026-11-16T07:54:39+00:00"
+    },
+    {
+      "actor": "balance",
+      "evidence": "qa-run balance passed",
+      "from": "TESTES",
+      "notes": "",
+      "to": "BALANCEAMENTO",
+      "ts": "2026-11-16T07:54:44+00:00"
+    },
+    {
+      "actor": "auditor",
+      "evidence": "qa-run strict passed",
+      "from": "BALANCEAMENTO",
+      "notes": "",
+      "to": "AUDITORIA",
+      "ts": "2026-11-16T07:54:44+00:00"
+    },
+    {
+      "actor": "qa",
+      "evidence": "builds/preview.zip",
+      "from": "AUDITORIA",
+      "notes": "",
+      "to": "PREVIEW",
+      "ts": "2026-11-16T07:54:45+00:00"
+    }
+  ],
+  "kind": "game",
+  "name": "Chrono Blade",
+  "project_id": "chrono-blade",
+  "protected": false,
+  "stage": "PREVIEW",
+  "updated_at": "2026-11-16T07:54:45+00:00",
+  "version": "0.1.0",
+  "workspace": "games/chrono-blade"
+}

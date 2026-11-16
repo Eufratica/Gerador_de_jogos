@@ -1,0 +1,38 @@
+{
+  "balance_schema_version": 1,
+  "findings": [],
+  "genre": "action-rpg",
+  "godot_verifier": null,
+  "passed": true,
+  "profiles": [
+    {
+      "clear_rate": 1.0,
+      "final_gold": 35.5,
+      "ok": true,
+      "profile": "F2P_PURE",
+      "steps_elapsed": 11,
+      "worst_case_damage_ratio": 0.2052
+    },
+    {
+      "clear_rate": 1.0,
+      "final_gold": 3.17,
+      "ok": true,
+      "profile": "CASUAL_OPTIMAL",
+      "steps_elapsed": 10,
+      "worst_case_damage_ratio": 0.2052
+    },
+    {
+      "clear_rate": 1.0,
+      "final_gold": 7.3,
+      "ok": true,
+      "profile": "HARDCORE_STRESS",
+      "steps_elapsed": 10,
+      "worst_case_damage_ratio": 0.1823
+    }
+  ],
+  "project_id": "chrono-blade",
+  "rooms_evaluated": 2,
+  "seed": 2026,
+  "simulator_family": "combat_progression",
+  "verified_at": "2026-11-16T07:54:41Z"
+}

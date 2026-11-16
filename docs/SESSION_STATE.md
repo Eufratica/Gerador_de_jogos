@@ -32,8 +32,11 @@
 - `.\infrastructure\scripts\playforge.ps1 test-win`: `229 assertions | Failed: 0`, `Action Balance Verifier` `PASSED` (0 soft-locks), `Engine Boot Gate` `14 assertions | Failed: 0`.
 - Restrições preservadas: política `FREE_TIER_POLICY.md` (`paid_services_enabled: false`), portas do operador intactas, sem inicialização indevida de `data/` na raiz e zero alterações no jogo-âncora.
 
-## 4. Próximas Ações Opcionais (Dependem de Decisão/Hardware Externo)
+## 4. Atualização Pós-`v1.0.0` (`2026-11-16`)
 
-1. Commit/tag no Git pelo operador após revisar o *working tree*.
-2. Caso o operador instale `Unity Editor`, `Unreal Engine 5` (workstation `>= 32 GB RAM` + GPU dedicado DX12), `Android SDK` ou modelos `Ollama` (`ollama pull ...`), executar `engine-probe`, `build-toolchains` e `ai-health` para ativar execução local adicional.
-3. `Sprint 4C` do jogo-âncora (`src/adapters/` & export `.aab` comercial) mediante decisão humana.
+1. **Git:** Commit `0cda05e` + tag `v1.0.0` criados; projetos gerados e estado operacional registrados em `main` antes do `git push`.
+2. **IA Local (`Ollama`):** Modelo gratuito `qwen2.5-coder:3b` baixado (`~1.9 GB`) e verificado via `ai-health` (`READY`) e `ModelRouter.invoke_structured`.
+3. **Projetos Isolados Criados em `games/` (`data/registry/projects.json`):**
+   - `chrono-blade`: protótipo 2D gerado via `godot-2d-action-rpg`, auditado e empacotado até `PREVIEW`.
+   - `zaikor-initine-zenkai`: jogo 3D Action-Adventure (`Compatibility Renderer`), **Fase 0 + Etapa 1 concluídas** em **`Godot 4.7.2 Stable`** (`tools/godot-4.7.2/`, preservando `4.4.stable` em `tools/godot/`). Ver `games/zaikor-initine-zenkai/SESSION_STATE.md` e `HANDOFF.md` para retomar na **Etapa 2** no novo PC.
+4. **Pendências Opcionais:** `Unity`, `Unreal Engine 5`, `Android SDK` e `Sprint 4C` do âncora `Zaikor` permanecem aguardando decisão/ferramentas no novo hardware. *(Nota: pastas `tools/` e `.env` ficam fora do Git por `.gitignore`; ao clonar em outra máquina, baixar `Godot 4.7.2 Stable` e `4.4-stable`.)*

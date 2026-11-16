@@ -1,0 +1,1 @@
+{"agent_id": "game-design", "endpoint_host": "127.0.0.1", "latency_ms": 18689.48, "model_id": "qwen2.5-coder:3b", "model_version": "latest", "project_id": "chrono-blade", "prompt_version": "1.0", "request_id": "9c9f20231c01", "result": "SUCCESS", "telemetry_schema_version": 1, "tier": "S", "timestamp": "2026-11-16T07:49:24Z", "tools_used": ["spec_validate"]}

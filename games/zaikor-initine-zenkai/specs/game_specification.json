@@ -1,0 +1,289 @@
+{
+  "acceptance_criteria": [
+    "Projeto abre sem erros criticos em Compatibility Renderer a 1280x720",
+    "Testes unitarios puros em scripts/core/ executam em modo headless",
+    "Vertical Slice cobre Santuario -> Trilha -> Puzzle Opcional -> Chefe com checkpoint e tela final",
+    "Desempenho medido na maquina alvo (i5-1135G7 / Intel Iris Xe) sem exceder orcamento termico/RAM"
+  ],
+  "accessibility": {
+    "axis_inversion": true,
+    "camera_shake_reduction": true,
+    "colorblind_mode": true,
+    "configurable_controls": true,
+    "subtitles": true
+  },
+  "art_and_assets": {
+    "palette": [
+      "#101218",
+      "#232933",
+      "#c8d0dc",
+      "#3cc7d6",
+      "#d94f3d"
+    ],
+    "style": "semi_realistic_dark_fantasy_low_poly_stylized"
+  },
+  "audio": {
+    "music_style": "adaptive_dark_fantasy_orchestral_synth",
+    "procedural_sfx": true
+  },
+  "camera_spec": {
+    "collision_spring_arm": true,
+    "combat_zoom_fov_delta": -6.0,
+    "mode": "third_person_over_shoulder",
+    "pitch_max_deg": 55.0,
+    "pitch_min_deg": -35.0
+  },
+  "characters": [
+    {
+      "id": "zaikor",
+      "name": "Zaikor",
+      "role": "player",
+      "stats": {
+        "base_attack": 18,
+        "base_health": 120,
+        "initine_max": 100,
+        "speed": 5.5
+      }
+    }
+  ],
+  "controls": {
+    "actions": [
+      "move_forward",
+      "move_backward",
+      "move_left",
+      "move_right",
+      "sprint",
+      "jump",
+      "dodge",
+      "light_attack",
+      "charged_attack",
+      "guard_parry",
+      "initine_skill",
+      "zenkai_activate",
+      "target_lock",
+      "interact",
+      "pause"
+    ],
+    "primary_input": "keyboard_and_mouse_with_controller_optional"
+  },
+  "core_gameplay": {
+    "camera": "third-person-cinematic over-the-shoulder with collision avoidance and combat framing",
+    "perspective": "3D",
+    "physics_mode": "godot-physics-3d-characterbody",
+    "renderer": "gl_compatibility"
+  },
+  "core_loop": "Explorar regiao de Aetheryn -> Ler pistas ambientais e resolver quebra-cabeca Initine -> Enfrentar criaturas em combate tatico -> Ativar Zenkai em momentos criticos -> Derrotar chefe -> Salvar progresso e desbloquear melhorias",
+  "difficulty": {
+    "base_scaling": 1.15,
+    "boss_multiplier": 2.2
+  },
+  "economy": {
+    "currencies": [
+      "vestigios_initine",
+      "fragmentos_eco"
+    ],
+    "gacha_rates": {
+      "common": 0.7,
+      "legendary": 0.05,
+      "rare": 0.25
+    }
+  },
+  "enemies": [
+    {
+      "base_damage": 12,
+      "base_health": 70,
+      "id": "eco_stalker",
+      "name": "Vulto do Eco",
+      "type": "common"
+    },
+    {
+      "base_damage": 22,
+      "base_health": 160,
+      "id": "ash_sentinel",
+      "name": "Sentinela de Cinza",
+      "type": "elite"
+    },
+    {
+      "base_damage": 32,
+      "base_health": 650,
+      "id": "warden_first_echo",
+      "name": "Arconte da Ruptura",
+      "type": "boss"
+    }
+  ],
+  "engine": "godot",
+  "engine_selection_report": {
+    "justification_summary": "Engine selecionada por merito tecnico nos 14 criterios: 'Godot Engine 4.4' (89.23/100). Executavel imediatamente no host local: 'godot'.",
+    "recommended_engine": "godot"
+  },
+  "engine_version": "4.7.2-stable",
+  "game_id": "zaikor-initine-zenkai",
+  "genre": "action-rpg",
+  "inventory_spec": {
+    "collectibles_and_relics": true,
+    "stable_string_ids": true
+  },
+  "mechanics": [
+    {
+      "description": "Movimento direcional suave, esquiva e camera em terceira pessoa com anticolisao de paredes.",
+      "id": "mech_3p_movement_camera",
+      "name": "Locomocao & Camera 3P"
+    },
+    {
+      "description": "Ataques rapidos, carregados, combos, bloqueio/contra-acao, buffer de entrada, stagger e alvo travado.",
+      "id": "mech_tactical_combat",
+      "name": "Combate Modular 3D"
+    },
+    {
+      "description": "Sincronizacao controlada com a energia Initine que altera propriedades de habilidades com custo e duracao balanceados.",
+      "id": "mech_zenkai_sync",
+      "name": "Estado Zenkai (Initine)"
+    },
+    {
+      "description": "Ressonancia de obeliscos e alinhamento de simbolos integrados ao Vale do Primeiro Eco.",
+      "id": "mech_env_puzzle",
+      "name": "Quebra-Cabecas Ambientais Initine"
+    }
+  ],
+  "monetization": {
+    "enabled": false,
+    "model": "f2p_pure"
+  },
+  "name": "Zaikor: Initine Zenkai",
+  "narrative": {
+    "dialogue_style": "cinematic_subtitled_banners_and_environmental_lore",
+    "lore_summary": "Em Aetheryn, a Ruptura do Primeiro Eco fragmentou a energia Initine. Zaikor desperta nas ruinas buscando deter O Silencio Primordial e compreender sua propria ligacao com a Ruptura."
+  },
+  "persistence": {
+    "save_format": "versioned_json_atomic_checksum",
+    "slots": 3
+  },
+  "physics_spec": {
+    "culling": [
+      "frustum",
+      "lod",
+      "occlusion_selective"
+    ],
+    "engine": "godot_3d",
+    "forbidden_defaults": [
+      "ray_tracing",
+      "lumen",
+      "nanite",
+      "virtual_shadow_maps",
+      "heavy_volumetrics"
+    ]
+  },
+  "product_goals": [
+    "Entregar Vertical Slice 3D jogavel no Vale do Primeiro Eco com inicio, meio, chefe e encerramento",
+    "Operar em Compatibility Renderer (1280x720, meta 30 FPS) compativel com Intel Iris Xe integrada e ~11.74 GB RAM",
+    "Garantir identidade 100% original (Aetheryn, Initine, Zaikor, O Silencio Primordial) sem copias de propriedades de terceiros",
+    "Manter separacao estrita entre scripts puros testaveis offline e camada de cena/nos 3D"
+  ],
+  "progression": {
+    "curve_type": "modular_skill_tree_chapter_gated",
+    "max_level": 20
+  },
+  "quests_spec": {
+    "chapters": 7,
+    "vertical_slice_chapter": "O Despertar / Vale do Primeiro Eco"
+  },
+  "references": [
+    "Linguagem cinematografica e peso de combate em terceira pessoa (referencia conceitual God of War, 100% sem copia de assets/IP)",
+    "Arquitetura deterministica PlayForge / jogo-ancora isolado na raiz"
+  ],
+  "security": {
+    "anti_tamper": true,
+    "offline_only": true
+  },
+  "spec_id": "spec-zaikor-initine-zenkai-v1",
+  "spec_schema_version": 2,
+  "subgenre": "3d-dark-fantasy-action-adventure",
+  "target_audience": {
+    "demographic": "Jogadores de acao e aventura 3D single-player em fantasia sombria (16+ anos)",
+    "playstyle": "Campanha narrativa cinematografica com exploracao, combate tatico e quebra-cabe\u00e7as (10-15 min na Vertical Slice)"
+  },
+  "target_platforms": [
+    "windows"
+  ],
+  "technical_requirements": {
+    "headless_compatible": true,
+    "host_installed_godot": "4.4.stable",
+    "max_ram_mb": 4096,
+    "recommended_godot": "4.7.2-stable",
+    "renderer": "gl_compatibility",
+    "target_fps": 30
+  },
+  "tools_required": [
+    "godot",
+    "blender",
+    "ffmpeg",
+    "ollama"
+  ],
+  "ui_ux": {
+    "elements": [
+      "health_bar",
+      "initine_bar",
+      "zenkai_gauge",
+      "interaction_prompt",
+      "boss_health_bar",
+      "pause_and_settings_menu"
+    ],
+    "resolution": "1280x720",
+    "screen_orientation": "landscape"
+  },
+  "value_proposition": "Aventura 3D sombria e cinematografica em terceira pessoa combinando combate responsivo com sincronizacao Initine/Zenkai, exploracao ambiental e otimizacao realista para GPU integrada.",
+  "version": "0.1.0",
+  "worlds_and_levels": {
+    "total_rooms": 4,
+    "worlds": [
+      {
+        "name": "Area 1 - O Vale do Primeiro Eco",
+        "rooms": [
+          {
+            "connections": [
+              {
+                "target_room_id": "trilha_ruinas"
+              }
+            ],
+            "name": "Santuario do Despertar",
+            "room_id": "santuario_despertar"
+          },
+          {
+            "connections": [
+              {
+                "target_room_id": "santuario_despertar"
+              },
+              {
+                "target_room_id": "clareira_obelisco"
+              },
+              {
+                "target_room_id": "clareira_chefe"
+              }
+            ],
+            "name": "Trilha das Ruinas Antigas",
+            "room_id": "trilha_ruinas"
+          },
+          {
+            "connections": [
+              {
+                "target_room_id": "trilha_ruinas"
+              }
+            ],
+            "name": "Mirante dos Ecos (Opcional / Puzzle)",
+            "room_id": "clareira_obelisco"
+          },
+          {
+            "connections": [
+              {
+                "target_room_id": "trilha_ruinas"
+              }
+            ],
+            "name": "Anfiteatro do Primeiro Eco (Chefe)",
+            "room_id": "clareira_chefe"
+          }
+        ],
+        "world_id": "vale_primeiro_eco"
+      }
+    ]
+  }
+}
